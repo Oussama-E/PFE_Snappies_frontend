@@ -14,12 +14,12 @@
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
     <!-- Menu déroulant pour l'admin-->
-    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item >Voir livreurs</button>
       <button mat-menu-item >Voir commandes</button>
       <button mat-menu-item >Voir articles</button>
-    </mat-menu>
+    </mat-menu> -->
 
     
     <img width="40" alt="Logo" src="../assets/images/61df4d08f2e542577c9b93f7_navbar__img-logo.png"/>
@@ -44,22 +44,23 @@
 
     <!-- Highlight Card -->
     <div class="card highlight-card card-small">
-      <p>WELCOME IN SNAPPIES</p>    
+      <p>BIENVENU SUR SNAPPIES</p>    
     </div>
 
     <!-- Resources -->
-    <h2>Log in</h2>
-    <p>Enter your log-in details</p>
+    <h2>Identification</h2>
+    <p>Veuillez entrez vos identifiants ci-dessous</p>
 
     <!-- Login Form -->
-    <div class="login-form">
-      <h2>Login</h2>
+      <div class="login-form">
       <form>
-        <label for="username">Username:</label>
+        <label for="username">Nom d'utilisateur:</label>
         <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
+
+        <label for="password">Mot de passe:</label>
         <input type="password" id="password" name="password" required>
-        <button type="submit">Login</button>
+
+        <button type="submit">Connexion</button>
       </form>
     </div>
   </div>
