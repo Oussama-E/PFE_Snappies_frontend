@@ -1,12 +1,28 @@
-
-
-<p>create-command-form works!</p>
-<p>create-command-form works!</p>
-
-<p>create-command-form works!</p>
-
-<p>create-command-form works!</p>
-
-<p>create-command-form works!</p>
-<router-outlet></router-outlet>
-
+<div class="commandFormDiv">
+    <form [formGroup]="commandForm" (ngSubmit)="onSubmit()">
+        <div class="selectCommandForm">
+            <p>Client:</p>
+            <select formControlName="client" *ngFor="let client of clients">
+                <option value="{{ client.name }}">{{ client.name }}</option>
+            </select>
+            <button>Modifier</button>
+        </div>
+        <div class="selectCommandForm">
+            <p>Article:</p>
+            <select formControlName="article" *ngFor="let article of articles">
+                <option value="{{ article.name }}">{{ article.name }}</option>
+            </select>
+            <button>Modifier</button>
+        </div>
+        <div class="selectCommandForm">
+            <p>Tournée:</p>
+            <select formControlName="tournee" *ngFor="let tournee of tournees">
+                <option value="{{ tournee.name }}">{{ tournee.name }}</option>
+            </select>
+            <button>Modifier</button>
+        </div>
+        <div>
+            <button class="commandFormSubmitButton" type="submit" [disabled]="!commandForm.valid">Créer la commande</button>
+        </div>
+    </form>
+</div>
