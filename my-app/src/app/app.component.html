@@ -10,7 +10,7 @@
   <meta name="theme-color" content="#1976d2">
 </head>
 <body>
-
+  
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
     <!-- Menu déroulant pour l'admin-->
@@ -21,8 +21,9 @@
       <button mat-menu-item >Voir articles</button>
     </mat-menu> -->
 
-    
-    <img width="40" alt="Logo" src="../assets/images/61df4d08f2e542577c9b93f7_navbar__img-logo.png"/>
+    <a routerLink="/">
+      <img width="40" alt="Logo" src="../assets/images/61df4d08f2e542577c9b93f7_navbar__img-logo.png"/>
+    </a>
     <span>Snappies</span>
     <div class="spacer"></div>
     <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
@@ -41,28 +42,7 @@
 
   <!-- Content -->
   <div class="content" role="main">
-
-    <!-- Highlight Card -->
-    <div class="card highlight-card card-small">
-      <p>BIENVENU SUR SNAPPIES</p>    
-    </div>
-
-    <!-- Resources -->
-    <h2>Identification</h2>
-    <p>Veuillez entrez vos identifiants ci-dessous</p>
-
-    <!-- Login Form -->
-      <div class="login-form">
-      <form>
-        <label for="username">Nom d'utilisateur:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit">Connexion</button>
-      </form>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 
 </body>

@@ -8,10 +8,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateCommandFormComponent } from './create-command-form/create-command-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreateCommandFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
