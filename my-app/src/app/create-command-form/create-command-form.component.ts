@@ -13,11 +13,19 @@ export class CreateCommandFormComponent {
     article: new FormControl('', Validators.required),
     tournee: new FormControl('', Validators.required),
   });
-
+  public nbSelects : any[] = [{type : "select"}]
   public articles: any[] = [{name : "pas de données"}];
   public tournees: any[] = [{name : "pas de données"}];
   public clients: any[] = [{name : "pas de données"}];
   constructor(private http: HttpClient) { }
+
+  ajouter1SelectArticle(): void {
+    this.nbSelects.push({type : "select"})
+  }
+
+  enlever1SelectArticle(): void {
+    if(this.nbSelects.length>1)this.nbSelects.pop();
+  }
 
   ngOnInit(): void {
     console.log(this.articles[0].name);

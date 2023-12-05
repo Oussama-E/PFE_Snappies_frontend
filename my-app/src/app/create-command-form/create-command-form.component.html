@@ -9,9 +9,13 @@
         </div>
         <div class="selectCommandForm">
             <p>Article:</p>
+            <div *ngFor="let select of nbSelects">
             <select formControlName="article" *ngFor="let article of articles">
                 <option value="{{ article.name }}">{{ article.name }}</option>
             </select>
+            </div>
+            <button (click)="ajouter1SelectArticle()">ajouter un champ</button>
+            <button (click)="enlever1SelectArticle()">enlever un champ</button>
             <button>Modifier</button>
         </div>
         <div class="selectCommandForm">
