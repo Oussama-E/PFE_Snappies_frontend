@@ -10,10 +10,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
+import { TourneeComponent } from './ADMIN/tournee/tournee.component';
+import { LoginComponent } from './LOGIN/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TourneeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
