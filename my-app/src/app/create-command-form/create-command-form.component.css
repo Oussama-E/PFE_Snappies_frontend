@@ -10,6 +10,19 @@
     font-size: large;
     font-weight: bolder;
     border-radius: 20px;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }
 
 .selectCommandForm{
@@ -41,3 +54,5 @@ select{
 .commandFormSubmitButton:hover {
     background-color: #b9a017;
 }
+
+
