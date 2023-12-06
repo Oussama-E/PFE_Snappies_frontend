@@ -2,16 +2,16 @@
     <form [formGroup]="commandForm" (ngSubmit)="onSubmit()">
         <div class="selectCommandForm">
             <p>Client:</p>
-            <select formControlName="client" *ngFor="let client of clients">
-                <option value="{{ client.name }}">{{ client.name }}</option>
+            <select formControlName="client" >
+                <option *ngFor="let client of clients" value="{{ client.name }}">{{ client.name }}</option>
             </select>
             <button>Modifier</button>
         </div>
         <div class="selectCommandForm">
             <p>Article:</p>
             <div *ngFor="let select of nbSelects">
-            <select formControlName="article" *ngFor="let article of articles">
-                <option value="{{ article.name }}">{{ article.name }}</option>
+            <select formControlName="article" >
+                <option *ngFor="let article of articles" value="{{ article.value }}">{{ article.value }}</option>
             </select>
             </div>
             <button (click)="ajouter1SelectArticle()">ajouter un champ</button>
@@ -20,8 +20,8 @@
         </div>
         <div class="selectCommandForm">
             <p>Tournée:</p>
-            <select formControlName="tournee" *ngFor="let tournee of tournees">
-                <option value="{{ tournee.name }}">{{ tournee.name }}</option>
+            <select formControlName="tournee" >
+                <option *ngFor="let tournee of tournees" value="{{ tournee.name }}">{{ tournee.name }}</option>
             </select>
             <button>Modifier</button>
         </div>

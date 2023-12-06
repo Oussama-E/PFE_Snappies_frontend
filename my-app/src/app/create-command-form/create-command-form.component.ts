@@ -19,6 +19,8 @@ export class CreateCommandFormComponent {
   public clients: any[] = [{name : "pas de données"}];
   constructor(private http: HttpClient) { }
 
+  
+
   ajouter1SelectArticle(): void {
     this.nbSelects.push({type : "select"})
   }
@@ -36,7 +38,7 @@ export class CreateCommandFormComponent {
   }
 
   getArticles(): void {
-    const apiUrl = 'https://exemple.com/api/objets';
+    const apiUrl = 'http://localhost:8000/commande/getAll';
 
     this.http.get<any[]>(apiUrl)
       .subscribe(
@@ -85,7 +87,7 @@ export class CreateCommandFormComponent {
         tournee: this.commandForm.value.tournee,
       };
 
-      const apiUrl = 'https://exemple.com/api/commandes';
+      const apiUrl = 'http://localhost:8000/login/loginUser';
 
       this.http.post(apiUrl, formData)
         .subscribe(
@@ -96,6 +98,9 @@ export class CreateCommandFormComponent {
             console.error('Erreur lors de la soumission du formulaire : ', error);
           }
         );
+    }else{
+      
     }
+    
   }
 }
