@@ -23,10 +23,42 @@ export class CreateCommandFormComponent {
 
   ajouter1SelectArticle(): void {
     this.nbSelects.push({type : "select"})
+    const formData = {
+      username: "admin2",
+      password: "aze",
+    };
+
+    const apiUrl = 'http://localhost:8000/login/loginUser';
+
+    this.http.post(apiUrl, formData)
+      .subscribe(
+        (response) => {
+          console.log('Réponse de l\'API:', response);
+        },
+        (error) => {
+          console.error('Erreur lors de la soumission du formulaire : ', error);
+        }
+      );
   }
 
   enlever1SelectArticle(): void {
     if(this.nbSelects.length>1)this.nbSelects.pop();
+    const formData = {
+      id: "78",
+      value: "truc",
+    };
+
+    const apiUrl = 'http://localhost:8000/commande/create_commande';
+
+    this.http.post(apiUrl, formData)
+      .subscribe(
+        (response) => {
+          console.log('Réponse de l\'API:', response);
+        },
+        (error) => {
+          console.error('Erreur lors de la soumission du formulaire : ', error);
+        }
+      );
   }
 
   ngOnInit(): void {
