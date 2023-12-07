@@ -76,5 +76,3 @@ stages:
               runtimeStack: 'NODE|20.x'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               startUpCommand: 'cd my-app && npm run start'
-          - script: cat /root/.npm/_logs/2023-12-07T13_06_30_615Z-debug.log
-            displayName: 'Display npm debug log'
