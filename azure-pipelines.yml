@@ -26,7 +26,7 @@ stages:
         npm install -g @angular/cli@16.0.5
         cd my-app
         npm install
-        ng build --prod  # Utilisation de la commande ng build pour générer les fichiers dans le dossier "dist"
+        ng build --configuration production --aot  # Utilisation de la commande ng build pour générer les fichiers dans le dossier "dist"
       displayName: 'npm install and build'
 
     - task: ArchiveFiles@2
