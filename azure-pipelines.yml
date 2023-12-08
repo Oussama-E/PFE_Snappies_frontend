@@ -1,10 +1,23 @@
+# Node.js Express Web App to Linux on Azure
+# Build a Node.js Express app and deploy it to Azure as a Linux web app.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
 trigger:
 - main
 
 variables:
+
+  # Azure Resource Manager connection created during pipeline creation
   azureSubscription: '1541437d-98d5-4080-9074-a9107ff8abbd'
+
+  # Web app name
   webAppName: 'PFE-Snappies-MF'
+
+  # Environment name
   environmentName: 'PFE-Snappies-MF'
+
+  # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
 stages:
@@ -25,18 +38,14 @@ stages:
     - script: |
         npm install -g @angular/cli@16.0.5
         cd my-app
-        rm -rf node_modules
-        rm package-lock.json
-        npm cache clean -f
         npm install
-        npm cache clean -f
-        ng build --configuration production --aot
-      displayName: 'npm install and build'
+        npm run build --configuration production --aot
+      displayName: 'npm install, build and test'
 
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/my-app/dist'  # Spécifier le dossier "dist" pour l'archivage
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/my-app/dist'
         includeRootFolder: false
         archiveType: zip
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
@@ -65,6 +74,6 @@ stages:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
               appName: $(webAppName)
-              runtimeStack: 'NODE|16.x'  # Assurez-vous que la version Node.js est compatible avec votre application
+              runtimeStack: 'NODE|20.x'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               startUpCommand: 'cd my-app && npm install && npm start'
