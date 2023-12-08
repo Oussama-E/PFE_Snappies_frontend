@@ -39,7 +39,7 @@ stages:
         npm install -g @angular/cli@16.0.5
         cd my-app
         npm install
-        npm run build --configuration production --aot
+        npm run build --configuration "production"
       displayName: 'npm install, build and test'
 
     - task: ArchiveFiles@2
