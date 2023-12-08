@@ -25,9 +25,12 @@ stages:
     - script: |
         npm install -g @angular/cli@16.0.5
         cd my-app
+        rm -rf node_modules
+        rm package-lock.json
         npm cache clean -f
         npm install
-        ng build --configuration production --aot  # Utilisation de la commande ng build pour générer les fichiers dans le dossier "dist"
+        npm cache clean -f
+        ng build --configuration production --aot
       displayName: 'npm install and build'
 
     - task: ArchiveFiles@2
