@@ -63,4 +63,4 @@ stages:
               appName: $(webAppName)
               runtimeStack: 'NODE|16.x'  # Assurez-vous que la version Node.js est compatible avec votre application
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-              startUpCommand: 'npm install && npm start'
+              startUpCommand: 'cd my-app && npm install && npm start'
