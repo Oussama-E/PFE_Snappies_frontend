@@ -23,7 +23,7 @@ stages:
       displayName: 'Install Node.js'
 
     - script: |
-        npm install -g @angular/cli
+        npm install -g @angular/cli@16.0.5
         cd my-app
         npm install
         ng build --prod  # Utilisation de la commande ng build pour générer les fichiers dans le dossier "dist"
