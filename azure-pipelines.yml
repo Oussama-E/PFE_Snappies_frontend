@@ -25,6 +25,7 @@ stages:
     - script: |
         npm install -g @angular/cli@16.0.5
         cd my-app
+        npm cache clean -f
         npm install
         ng build --configuration production --aot  # Utilisation de la commande ng build pour générer les fichiers dans le dossier "dist"
       displayName: 'npm install and build'
