@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-create-command-form',
@@ -8,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./create-command-form.component.css'],
 })
 export class CreateCommandFormComponent {
+  isConnected: any;
   commandForm = new FormGroup({
     client: new FormControl('', Validators.required),
     article: new FormControl('', Validators.required),
@@ -17,56 +19,25 @@ export class CreateCommandFormComponent {
   public articles: any[] = [{name : "pas de données"}];
   public tournees: any[] = [{name : "pas de données"}];
   public clients: any[] = [{name : "pas de données"}];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
 
   
 
   ajouter1SelectArticle(): void {
     this.nbSelects.push({type : "select"})
-    const formData = {
-      username: "admin2",
-      password: "aze",
-    };
-
-    const apiUrl = 'http://localhost:8000/login/loginUser';
-
-    this.http.post(apiUrl, formData)
-      .subscribe(
-        (response) => {
-          console.log('Réponse de l\'API:', response);
-        },
-        (error) => {
-          console.error('Erreur lors de la soumission du formulaire : ', error);
-        }
-      );
   }
 
   enlever1SelectArticle(): void {
     if(this.nbSelects.length>1)this.nbSelects.pop();
-    const formData = {
-      id: "78",
-      value: "truc",
-    };
-
-    const apiUrl = 'http://localhost:8000/commande/create_commande';
-
-    this.http.post(apiUrl, formData)
-      .subscribe(
-        (response) => {
-          console.log('Réponse de l\'API:', response);
-        },
-        (error) => {
-          console.error('Erreur lors de la soumission du formulaire : ', error);
-        }
-      );
   }
 
   ngOnInit(): void {
-    console.log(this.articles[0].name);
-    
     this.getArticles();
     this.getClients();
     this.getTournees();
+    this.tokenService.isConnected$.subscribe(newValue => {
+      this.isConnected = newValue;
+    });
   }
 
   getArticles(): void {
