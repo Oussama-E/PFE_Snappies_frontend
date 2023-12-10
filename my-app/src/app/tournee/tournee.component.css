@@ -1,0 +1,91 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style du conteneur principal */
+  div {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style des titres */
+  h1 {
+    color: #333;
+  }
+  
+  h2 {
+    color: #555;
+  }
+  
+  /* Style des éléments de la liste */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  /* Style des boutons */
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Style des flèches pour afficher/masquer les détails */
+  span {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    margin-left: 10px;
+  }
+  
+  .arrow-up {
+    border-bottom: 6px solid #4caf50;
+  }
+  
+  .arrow-down {
+    border-top: 6px solid #4caf50;
+  }
+  
+  /* Style de la liste déroulante */
+  select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  /* Style des détails de la tournée */
+  h4 {
+    margin-top: 10px;
+    color: #4caf50;
+  }
+  
+  /* Style des éléments de la liste de commandes */
+  ul ul {
+    margin-top: 10px;
+    list-style-type: none;
+  }
+  
+  /* Style des éléments de la liste de commandes */
+  li {
+    margin-bottom: 5px;
+  }
+  
