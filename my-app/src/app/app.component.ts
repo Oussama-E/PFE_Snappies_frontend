@@ -16,7 +16,7 @@ export class AppComponent {
       this.isConnected = newValue;
     });
   }
-
+ 
   disconnect(): void {
     this.tokenService.removeToken();
     this.tokenService.setToDisconnected();
