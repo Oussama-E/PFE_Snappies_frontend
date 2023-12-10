@@ -26,7 +26,7 @@ export class LoginFormComponent {
       this.isConnected = newValue;
     });
   }
-
+ 
   onSubmit() {
     if (this.commandForm.valid) {
       const formData = {
