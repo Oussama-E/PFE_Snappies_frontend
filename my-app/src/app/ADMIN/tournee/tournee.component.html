@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Snappies Livreur</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/images/61df4d08f2e542577c9b93f7_navbar__img-logo.png"
+    />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#1976d2" />
+  </head>
+  <body>
+    <!-- Toolbar -->
+    <div class="toolbar" role="banner">
+      <!-- Menu déroulant pour l'admin-->
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item><a class="nav-link" routerLink="/livreurs">Voir livreurs</a></button>
+        <button mat-menu-item><a class="nav-link" routerLink="/commandes">Voir commandes</a></button>
+        <button mat-menu-item><a class="nav-link" routerLink="/articles">Voir articles</a></button>
+        <button mat-menu-item>Déconnexion</button>
+      </mat-menu>
+
+      <img
+        width="40"
+        alt="Logo"
+        src="../assets/images/61df4d08f2e542577c9b93f7_navbar__img-logo.png"
+      />
+      <span>Snappies</span>
+      
+    </div>
+
+    <!-- Content -->
+    <div class="content" role="main">
+      <!-- Highlight Card -->
+      <div class="card highlight-card card-small">
+        <p>Tournées</p>
+      </div>
+    </div>
+    
+  </body>
+</html>
