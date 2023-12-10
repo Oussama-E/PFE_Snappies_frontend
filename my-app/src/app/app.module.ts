@@ -10,10 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ArticleComponent } from './ADMIN/articles/article/article.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
