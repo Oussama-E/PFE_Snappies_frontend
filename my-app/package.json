@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "ng serve --port 8080",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.5",
-    "@angular/cli": "~16.0.5",
+    "@angular/cli": "^16.2.10",
     "@angular/compiler-cli": "^16.0.0",
     "@angular/localize": "^16.0.0",
     "@types/jasmine": "~4.3.0",
