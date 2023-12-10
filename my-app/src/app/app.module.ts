@@ -10,18 +10,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateCommandFormComponent } from './create-command-form/create-command-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommandsListComponent } from './commands-list/commands-list.component';
+import { TourneeComponent } from './tournee/tournee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateCommandFormComponent,
     LoginFormComponent,
-    CommandsListComponent
+    CommandsListComponent,
+    TourneeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { CommandsListComponent } from './commands-list/commands-list.component';
 
     MatMenuModule,
     MatButtonModule,
+    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
