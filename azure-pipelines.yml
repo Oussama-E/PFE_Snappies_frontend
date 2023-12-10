@@ -38,7 +38,7 @@ steps:
   
 - task: AzureStaticWebApp@0
   inputs:
-    app_location: 'src'
+    app_location: 'dist'
     app_build_command: ng build --configuration development
     cwd: '$(System.DefaultWorkingDirectory)/my-app'
     azure_static_web_apps_api_token: $(token)
