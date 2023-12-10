@@ -1,31 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { TokenService } from './services/token.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'my-app';
-  helloWorldMessage: string = '';
+export class AppComponent {
+  isConnected: any
 
-  constructor(private http: HttpClient) {}
+  constructor(private tokenService: TokenService) { }
 
   ngOnInit() {
-    this.fetchHelloWorld();
+    this.tokenService.isConnected$.subscribe(newValue => {
+      this.isConnected = newValue;
+    });
   }
-
-  fetchHelloWorld() {
-    this.http.get<any>('http://localhost:8000/commande/helloWorld')
-      .subscribe(
-        data => {
-          console.log('Response from Django API:', data);
-          this.helloWorldMessage = data.message; // Mettez la propriété correcte selon la réponse de votre API
-        },
-        error => {
-          console.error('Error fetching data from Django API:', error);
-        }
-      );
+ 
+  disconnect(): void {
+    this.tokenService.removeToken();
+    this.tokenService.setToDisconnected();
   }
 }

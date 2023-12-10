@@ -1,0 +1,58 @@
+.commandFormDiv{
+    margin-top: 100px;
+    background-color: rgba(230, 220, 190, 0.729);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 70px;
+    padding-right: 70px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 20px;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.selectCommandForm{
+    text-align: start;
+    padding: 20px;
+}
+
+select{
+    padding: 10px;
+    border-radius: 10px;
+    padding-right: 200px;
+    margin-right: 10px;
+}
+
+.commandFormSubmitButton {
+    font-size: large;
+    width: 100%;
+    margin-top: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #d2b619;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.commandFormSubmitButton:hover {
+    background-color: #b9a017;
+}
+
+

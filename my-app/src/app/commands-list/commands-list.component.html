@@ -1,0 +1,15 @@
+<div>
+    <h1 class="title">Commands</h1>
+    <div ngbAccordion class="divAccordion" [closeOthers]="true">
+        <div *ngFor="let command of commands" ngbAccordionItem>
+            <h2 ngbAccordionHeader>
+                <button ngbAccordionButton>{{ command.id }}</button>
+            </h2>
+            <div ngbAccordionCollapse>
+                <div ngbAccordionBody>
+                    <ng-template>{{ command.value }}</ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
