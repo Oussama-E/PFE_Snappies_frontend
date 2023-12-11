@@ -12,8 +12,8 @@ export class TourneeComponent implements OnInit {
   livreurs: any[] = [];
   tourneesData: any[] = [];
   selectedTourneeId: number | null = null;
-  commandesData: { [tourneeId: number]: any[] } = {};  // Utilisation d'un objet pour stocker les commandes par id_tournee
-  selectedLivreurId: { [tourneeId: number]: number } = {};  // Utilisation d'un objet pour stocker les livreurs par id_tournee
+  commandesData: { [tourneeId: number]: any[] } = {};  
+  selectedLivreurId: { [tourneeId: number]: number } = {};  
   userIsAdmin: boolean = true; 
 
 
@@ -44,10 +44,9 @@ export class TourneeComponent implements OnInit {
   }
 
   loadCommandes(tourneeId: number): void {
-    // Chargez les commandes de la tournée spécifique
     this.tourneeService.getCommandesFromTournee(tourneeId).subscribe(
       (commandesData: any) => {
-        this.commandesData[tourneeId] = commandesData;  // Stockez les commandes dans la variable
+        this.commandesData[tourneeId] = commandesData;  
       },
       (error) => {
         console.error('Erreur lors du chargement des commandes de la tournée', error);
@@ -68,14 +67,12 @@ export class TourneeComponent implements OnInit {
   assignerTournee(tourneeId: number): void {
     const livreurId = this.selectedLivreurId[tourneeId];
     console.log(livreurId);
-    // Vérifiez si un livreur est sélectionné
     if (livreurId) {
       console.log('Assigner la tournée:', tourneeId, 'à livreur:', livreurId);
 
       this.tourneeService.assignerTournee(tourneeId, livreurId).subscribe(
         (response: any) => {
           console.log(response);
-          // Mettez à jour les données après l'assignation
           this.loadTournees();
           console.log(response);
         },
