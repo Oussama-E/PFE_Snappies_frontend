@@ -35,15 +35,11 @@
         alt="Logo"
         src="../assets/images/61df4d08f2e542577c9b93f7_navbar__img-logo.png"
       />
-      <span>Snappies</span>
     </div>
 
     <!-- Content -->
     <div class="content" role="main">
       <!-- Highlight Card -->
-      <div class="card highlight-card card-small">
-        <p>Vos articles</p>
-      </div>
       <!-- article.component.html -->
       <div class="form-container" [@visibility]="state">
         <h2>Créer un nouvel article</h2>
@@ -71,6 +67,12 @@
           </div>
           <button type="submit" class="btn btn-success">Créer</button>
         </form>
+      </div>
+
+      <hr>
+      
+      <div class="card highlight-card card-small">
+        <p>Vos articles</p>
       </div>
 
       <div class="container" [@visibility]="state">
