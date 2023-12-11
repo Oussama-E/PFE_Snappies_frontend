@@ -1,26 +1,36 @@
 import { AppComponent } from './app.component';
+import { LoginFormComponent } from './LOGIN/login-form/login-form.component';
 import { ArticleComponent } from './ADMIN/article/article.component';
 import { TourneeComponent } from './ADMIN/tournee/tournee.component';
-import { LoginComponent } from './LOGIN/login/login.component';
+import { CommandsListComponent } from './ADMIN/commands-list/commands-list.component';
+import { CreateCommandFormComponent } from './ADMIN/create-command-form/create-command-form.component';
 
-import { NgModule, isDevMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+
 import { ToastrModule } from 'ngx-toastr';
+import { NgModule, isDevMode } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatMenuModule } from '@angular/material/menu';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatButtonModule } from '@angular/material/button';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleComponent,
     TourneeComponent,
-    LoginComponent
+    LoginFormComponent,
+    CommandsListComponent,
+    CreateCommandFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,10 +44,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
     ReactiveFormsModule,
     MatMenuModule,
     MatButtonModule,
+    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    MatGridListModule 
+    MatGridListModule, 
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,8 +12,46 @@
     />
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1976d2" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
   </head>
   <body>
-    <router-outlet></router-outlet>
+    <!-- Toolbar -->
+    <div class="toolbar" role="banner">
+      <a routerLink="/">
+      <img
+        width="40"
+        alt="Logo"
+        src="../assets/images/61df4d08f2e542577c9b93f7_navbar__img-logo.png"
+      />
+      </a>
+    </div>
+
+
+      <!-- Menu déroulant pour l'admin-->
+      <button mat-button [matMenuTriggerFor]="menuAdmin">Menu</button>
+      <mat-menu #menuAdmin="matMenu">
+        <button mat-menu-item routerLink="/tournees">Voir les tournées</button>
+        <button mat-menu-item routerLink="/livreurs">Vos livreurs</button>
+        <button mat-menu-item routerLink="/commandes">Vos commandes</button>
+        <button mat-menu-item routerLink="/articles">Vos articles</button>
+        <button mat-menu-item routerLink="/" *ngIf="isConnected" (click)="disconnect()">Déconnexion</button>
+      </mat-menu>
+
+      <!-- Menu déroulant pour les livreurs-->
+      <button mat-button [matMenuTriggerFor]="menuLivreur">Menu</button>
+      <mat-menu #menuLivreur="matMenu">
+        <button mat-menu-item routerLink="/courses">Vos courses</button>
+        <button mat-menu-item routerLink="/" *ngIf="isConnected" (click)="disconnect()">Déconnexion</button>
+      </mat-menu>
+      
+      <div class="spacer"></div>
+
+    <div class="content" role="main">
+      <router-outlet></router-outlet>
+    </div>
   </body>
 </html>

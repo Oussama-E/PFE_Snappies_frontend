@@ -27,6 +27,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/custom-theme.scss",
               "src/styles.css"
             ],
@@ -44,8 +45,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "100kb",
-                  "maximumError": "100kb"
+                  "maximumWarning": "200kb",
+                  "maximumError": "250kb"
                 }
               ],
               "outputHashing": "all"
