@@ -7,6 +7,7 @@ import { TokenService } from './services/token.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'my-app';
   isConnected: any
 
   constructor(private tokenService: TokenService) { }

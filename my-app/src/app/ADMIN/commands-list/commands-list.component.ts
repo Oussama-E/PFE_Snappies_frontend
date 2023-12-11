@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TokenService } from '../services/token.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-commands-list',

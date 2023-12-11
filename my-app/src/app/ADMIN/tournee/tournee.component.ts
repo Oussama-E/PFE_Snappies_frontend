@@ -1,7 +1,7 @@
 // tournee.component.ts
 import { Component, OnInit } from '@angular/core';
-import { LivreurService } from '../services/livreurService/livreur.service';
-import { TourneeService } from '../services/tourneeService/tournee.service';
+import { LivreurService } from 'src/app/services/livreurService/livreur.service';
+import { TourneeService } from 'src/app/services/tourneeService/tournee.service';
 
 @Component({
   selector: 'app-tournee',

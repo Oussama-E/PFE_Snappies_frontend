@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div class="content" role="main">
+      <div class="form-container" [@visibility]="state">
+        <h2>Créer un nouvel article</h2>
+        <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Nom de l'article:</label>
+            <input type="text" class="form-control" formControlName="nom" />
+          </div>
+          <div class="form-group">
+            <label for="type">Type de vente:</label>
+            <select class="form-control" formControlName="type">
+              <option value="U">À l'unité</option>
+              <option value="C">Par caisse</option>
+            </select>
+          </div>
+          <!-- Ajout d'un input conditionnel selon le type de vente -->
+          <div class="form-group" *ngIf="articleForm.get('type')?.value === 'C'">
+            <label for="nbArticle">Nombre d'article par caisse:</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="nbr_articles"
+              min="1"
+            />
+          </div>
+          <button type="submit" class="btn btn-success">Créer</button>
+        </form>
+      </div>
+    </div>
+    <div class="card highlight-card card-small">
+      <p>Vos articles</p>
+    </div>
+
+    <div [@visibility]="state">
+      <mat-grid-list cols="3" rowHeight="30vh">
+        <mat-grid-tile
+          *ngFor="let article of articles"
+          [routerLink]="['/article', article.article]"
+        >
+          <div class="grid-tile-content">
+            <h3 class="grid-tile-title">{{ article.nom }}</h3>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="confirmDelete(article)"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            <p
+              class="grid-tile-text"
+              [ngClass]="{ unit: article.type === 'U', case: article.type === 'C' }"
+            >
+              Type de vente: {{ article.type }}
+            </p>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    
+  </body>
+</html>
