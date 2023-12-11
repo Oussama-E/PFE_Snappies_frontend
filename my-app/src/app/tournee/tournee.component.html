@@ -1,0 +1,34 @@
+<div>
+    <h1>tournee works!</h1>
+  
+    <h2>Voici la liste des tournées</h2>
+    <ul>
+      <li *ngFor="let tournee of tourneesData">
+        <div>
+          {{ tournee.nom }} - Livreur: {{ tournee.livreur }}
+          
+          <!-- Liste déroulante des livreurs -->
+          <select *ngIf="userIsAdmin" [(ngModel)]="selectedLivreurId[tournee.id]">
+            <option *ngFor="let livreur of livreurs" [value]="livreur.id_user">{{ livreur.username }}</option>
+          </select>
+          
+          <!-- Bouton pour assigner la tournée -->
+          <button *ngIf="userIsAdmin" (click)="assignerTournee(tournee.id)">Assigner la tournée</button>
+          
+          <button (click)="toggleDetails(tournee)">Afficher les commandes</button>
+          <span [ngClass]="{'arrow-up': tournee.showDetails, 'arrow-down': !tournee.showDetails}"></span>
+        </div>
+        <div *ngIf="tournee.showDetails">
+          <!-- Les détails de la tournée ici -->
+          <div *ngIf="commandesData[tournee.id] && commandesData[tournee.id].length > 0">
+            <h4>Commandes de la tournée :</h4>
+            <ul>
+              <li *ngFor="let commande of commandesData[tournee.id]">
+                {{ commande.client }} - {{ commande.default ? 'Default' : 'Non default' }}
+            </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
