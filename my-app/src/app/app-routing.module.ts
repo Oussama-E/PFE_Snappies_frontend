@@ -4,7 +4,7 @@ import { ArticleComponent } from './ADMIN/article/article.component';
 import { TourneeComponent } from './ADMIN/tournee/tournee.component';
 import { LoginFormComponent } from './LOGIN/login-form/login-form.component';
 import { CommandsListComponent } from './ADMIN/commands-list/commands-list.component';
-import { CreateCommandFormComponent } from './ADMIN/create-command-form/create-command-form.component';
+import { CreateCommandFormComponent } from './ADMIN/create-command-form/create-command-form/create-command-form.component';
 
 const routes: Routes = [ 
   { path: '', component: LoginFormComponent},
