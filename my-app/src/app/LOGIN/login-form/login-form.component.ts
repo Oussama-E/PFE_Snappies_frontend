@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from '../../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -12,13 +13,14 @@ export class LoginFormComponent {
 
   isConnected: any;
   token: string='';
+  isAdmin:any;
 
   commandForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private http: HttpClient, private tokenService: TokenService) { }
+  constructor(private http: HttpClient, private tokenService: TokenService, private router: Router) { }
 
   ngOnInit() {
     this.token = this.tokenService.getToken() || '';
@@ -39,7 +41,10 @@ export class LoginFormComponent {
       this.http.post<any>(apiUrl, formData)
         .subscribe(
           data => {
-            this.tokenService.setToken(data.token)
+            this.tokenService.setToken(data.token , data.username)
+            this.checkUserRole(data.role);
+
+            console.log(data.username);
           },
           (error) => {
             console.error('Erreur lors de la soumission du formulaire : ', error);
@@ -50,6 +55,21 @@ export class LoginFormComponent {
         
     }
     
+  }
+
+  checkUserRole(role: string) {
+    if (role === 'livreur') {
+      this.router.navigate(['/livreur_page']);
+      this.isAdmin = false;
+      console.log('Connecté en tant que livreur.');
+    } else if (role === 'admin') {
+      this.tokenService.isAdmin$.subscribe(newValue => {
+        this.isAdmin = true;
+      });
+      console.log('Connecté en tant que admin.');
+    } else {
+      console.log('Rôle inconnu.');
+    }
   }
 
 }

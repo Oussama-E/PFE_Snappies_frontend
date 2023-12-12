@@ -3,7 +3,7 @@ import { LoginFormComponent } from './LOGIN/login-form/login-form.component';
 import { ArticleComponent } from './ADMIN/article/article.component';
 import { TourneeComponent } from './ADMIN/tournee/tournee.component';
 import { CommandsListComponent } from './ADMIN/commands-list/commands-list.component';
-import { CreateCommandFormComponent } from './ADMIN/create-command-form/create-command-form.component';
+import { CreateCommandFormComponent } from './ADMIN/create-command-form/create-command-form/create-command-form.component';
 
 
 import { ToastrModule } from 'ngx-toastr';
@@ -18,6 +18,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LivreurPageComponent } from './LIVREUR/livreur-page/livreur-page.component';
+import { CreateTourneePageComponent } from './ADMIN/create-tournee-page/create-tournee-page.component';
+import { CommonModule } from '@angular/common';
+import { AllLivreursComponent } from './ADMIN/all-livreurs/all-livreurs.component';
+import { CreateLivreurComponent } from './ADMIN/create-livreur/create-livreur.component';
 
 
 
@@ -31,6 +36,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginFormComponent,
     CommandsListComponent,
     CreateCommandFormComponent,
+    LivreurPageComponent,
+    CreateTourneePageComponent,
+    AllLivreursComponent,
+    CreateLivreurComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +59,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     MatGridListModule, 
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

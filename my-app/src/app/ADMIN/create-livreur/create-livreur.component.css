@@ -1,0 +1,77 @@
+/* Add this style to your LivreurCreationComponent's CSS file */
+
+.createLivreurFormDiv {
+    margin-top: 100px;
+    background-color: rgba(198, 193, 193, 0.729);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 70px;
+    padding-right: 70px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 20px;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.createLivreurFormLabel {
+    text-align: start;
+    padding: 20px;
+    display: inline-block;
+    width: 150px; /* Adjust the width as needed */
+  }
+  
+  .createLivreurFormInput {
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+  
+button{
+    border-radius: 5em;
+    border-style: none;
+    background-color: #658FDB;
+  }
+  /* Style specifically for the password input */
+  #createLivreurPasswordLabel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center the label and input field vertically */
+    padding-top: 10px;
+  }
+  
+  #createLivreurPasswordInput {
+    display: block; /* Force the input on a new line */
+    margin-top: 5px; /* Adjust the top margin as needed */
+  }
+  
+  .createLivreurFormSubmitButton {
+    font-size: large;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #d2b619;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .createLivreurFormSubmitButton:hover {
+    background-color: #b9a017;
+  }
