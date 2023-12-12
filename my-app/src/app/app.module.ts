@@ -3,7 +3,7 @@ import { LoginFormComponent } from './LOGIN/login-form/login-form.component';
 import { ArticleComponent } from './ADMIN/article/article.component';
 import { TourneeComponent } from './ADMIN/tournee/tournee.component';
 import { CommandsListComponent } from './ADMIN/commands-list/commands-list.component';
-import { CreateCommandFormComponent } from './ADMIN/create-command-form/create-command-form.component';
+import { CreateCommandFormComponent } from './ADMIN/create-command-form/create-command-form/create-command-form.component';
 
 
 import { ToastrModule } from 'ngx-toastr';
