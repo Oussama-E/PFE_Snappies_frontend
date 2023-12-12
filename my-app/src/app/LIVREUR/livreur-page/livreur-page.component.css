@@ -1,0 +1,15 @@
+.divAccordion {
+    width: 500px;
+}
+
+.title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Add any additional styles you need for your page */
+.marquer-livre {
+    background-color: green;  /* Ajoutez un style de fond vert pour le bouton de validation */
+    color: white;
+    margin-right: 10px;  /* Ajoutez une marge à droite pour séparer les boutons */
+}

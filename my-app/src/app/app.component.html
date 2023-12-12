@@ -32,22 +32,20 @@
 
 
       <!-- Menu déroulant pour l'admin-->
+      <ng-container *ngIf="isConnected ">
+
       <button mat-button [matMenuTriggerFor]="menuAdmin">Menu</button>
       <mat-menu #menuAdmin="matMenu">
-        <button mat-menu-item routerLink="/tournees">Voir les tournées</button>
-        <button mat-menu-item routerLink="/livreurs">Vos livreurs</button>
-        <button mat-menu-item routerLink="/commandes">Vos commandes</button>
-        <button mat-menu-item routerLink="/articles">Vos articles</button>
+        <button  mat-menu-item routerLink="/tournees" >Voir les tournées</button>
+        <button mat-menu-item routerLink="/livreurs" >Vos livreurs</button>
+        <button mat-menu-item routerLink="/commandes" >Vos commandes</button>
+        <button mat-menu-item routerLink="/articles" >Vos articles</button>
         <button mat-menu-item routerLink="/" *ngIf="isConnected" (click)="disconnect()">Déconnexion</button>
       </mat-menu>
+    </ng-container>
 
-      <!-- Menu déroulant pour les livreurs-->
-      <button mat-button [matMenuTriggerFor]="menuLivreur">Menu</button>
-      <mat-menu #menuLivreur="matMenu">
-        <button mat-menu-item routerLink="/courses">Vos courses</button>
-        <button mat-menu-item routerLink="/" *ngIf="isConnected" (click)="disconnect()">Déconnexion</button>
-      </mat-menu>
-      
+
+
       <div class="spacer"></div>
 
     <div class="content" role="main">
