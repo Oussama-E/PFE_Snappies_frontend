@@ -6,3 +6,15 @@
     text-align: center;
     margin: 100px;
 }
+
+.article-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* Ajoutez d'autres styles selon vos besoins */
+}
+
+.article-container p {
+    margin: 0; /* Pour supprimer les marges par défaut des paragraphes */
+    /* Ajoutez d'autres styles selon vos besoins */
+}

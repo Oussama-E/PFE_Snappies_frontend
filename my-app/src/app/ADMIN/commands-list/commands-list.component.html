@@ -1,14 +1,47 @@
 <div>
     <a routerLink="/nouvelleCommande">Créer une commande</a>
     <h1 class="title">Commands</h1>
+    <div>
+        <p>Tournée:</p>
+        <select required (change)="onTourneeChange($event)">
+            <option selected disabled>choisir tournée</option>
+            <option *ngFor="let tournee of tournees" value="{{ tournee.id }}">{{ tournee.nom }}</option>
+        </select>
+    </div>
     <div ngbAccordion class="divAccordion" [closeOthers]="true">
-        <div *ngFor="let command of commands" ngbAccordionItem>
+        <div *ngFor="let command of commands " ngbAccordionItem>
             <h2 ngbAccordionHeader>
-                <button ngbAccordionButton>{{ command.id }}</button>
+                <button ngbAccordionButton>Client : {{ command.client }}</button>
             </h2>
             <div ngbAccordionCollapse>
+                <button *ngIf="mapIsBeingModified.get(command.id_commande) == false;" (click)="setToUpdate(command.id_commande)">modifier</button>
+                <div *ngIf="mapIsBeingModified.get(command.id_commande) == true;">
+                    <button>Annuler</button>
+                    <button (click)="validateUpdate(command)">Valider</button>
+                </div>
                 <div ngbAccordionBody>
-                    <ng-template>{{ command.value }}</ng-template>
+                    <ng-template>
+                        <div *ngFor="let article of command.articles" class="article-container">
+                            <p>{{ article.nom_article }}</p>
+                            <div *ngIf="mapIsBeingModified.get(command.id_commande) == false;">
+                                <p *ngIf="article.quantite_caisse != 0">{{ article.quantite_caisse }} caisses</p>
+                                <p *ngIf="article.quantite_unite != 0">{{ article.quantite_unite }} unites</p>
+                            </div>
+                            <div *ngIf="mapIsBeingModified.get(command.id_commande) == true;">
+                                <div *ngIf="article.quantite_unite != 0">
+                                    <input value="{{ article.quantite_unite }}" required type="number" id="nbArticles{{ article.id_article }}" name="nbArticles"/>
+                                    <input value="{{ article | json }}" id="article{{ article.id_article }}" type=hidden/>
+                                    <p>unites</p>
+                                </div>
+                                <div *ngIf="article.quantite_caisse!= 0">
+                                    <input value="{{ article.quantite_caisse }}" required type="number" id="nbArticles{{ article.id_article }}" name="nbArticles"/>
+                                    <input value="{{ article | json }}" id="article{{ article.id_article }}" type=hidden/>
+                                    <p>caisses</p>
+                                </div>
+                                <button (click)="deleteArticle(article)"></button>
+                            </div>
+                        </div>
+                    </ng-template>
                 </div>
             </div>
         </div>
