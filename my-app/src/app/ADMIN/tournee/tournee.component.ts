@@ -53,6 +53,7 @@ export class TourneeComponent implements OnInit {
       }
     );
   }
+  
   loadLivreurs(): void {
     this.livreurService.getAllLivreurs().subscribe(
       (data: any) => {

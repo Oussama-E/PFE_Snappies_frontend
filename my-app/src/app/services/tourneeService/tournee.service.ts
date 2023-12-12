@@ -19,11 +19,12 @@ export class TourneeService {
   }
 
   getCommandesFromTournee(tourneeId: number): Observable<any> {
+    console.log("get tournee from commande new");
     const token = this.tokenService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
-    return this.http.get<any>(`${this.apiUrl}/get_commandes_from_tournee/${tourneeId}`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/get_commandes_tournee_modifie_ou_non/${tourneeId}`, { headers });
   }
-
+  
   assignerTournee(tourneeId: number, livreurId: number): Observable<any> {
     const token = this.tokenService.getToken();
     const url = `${this.apiUrl}/assigner_tournee/${tourneeId}`;
@@ -32,4 +33,19 @@ export class TourneeService {
     
     return this.http.post(url, body, { headers });
   }
+
+  creerTournee(nom: string): Observable<any> {
+    const token = this.tokenService.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`  
+    });
+
+    const body = { nom };
+
+    return this.http.post<any>(`${this.apiUrl}/creer_tournee`, body, { headers });
+  }
+
+
+  
 }
