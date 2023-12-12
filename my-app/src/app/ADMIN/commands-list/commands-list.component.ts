@@ -14,12 +14,24 @@ export class CommandsListComponent implements OnInit {
   public commands: any[] = [];
   public tournees: any[] = [];
   modifiedCommand: any[] = [];
+  public nbSelects : any[] = []
+  public articles: any[] = [{name : "pas de données"}];
   selectedTourneeId: any;
 
   constructor(private http: HttpClient, private tokenService: TokenService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.getTournees();
+  }
+
+  ajouter1SelectArticle(): void {
+    this.nbSelects.push({type : "select"});
+  }
+
+  enlever1SelectArticle(): void {
+    if(this.nbSelects.length>0){
+      this.nbSelects.pop();
+    }
   }
 
   getTournees(): void {
@@ -70,19 +82,35 @@ export class CommandsListComponent implements OnInit {
     this.getCommands(this.selectedTourneeId);
   }
 
-  setToUpdate(id_commande: any) {
-    this.mapIsBeingModified.set(id_commande, true);
+  setToUpdate(command: any) {
+    this.mapIsBeingModified.set(command.id_commande, true);
+
+    const token = this.tokenService.getToken();
+    const apiUrl = 'http://localhost:8000/articles/get_all_articles';
+
+    this.http.get<any[]>(apiUrl, {
+      headers: {
+        'Authorization': 'Token ' + token 
+      }
+    })
+      .subscribe(
+        (data) => {
+          this.articles = data.filter((article: any) => !command.articles.some((cmdArticle: any) => cmdArticle.id_article === article.article));
+        },
+        (error) => {
+          console.error('Erreur lors de la récupération des articles : ', error);
+        }
+      );
   }
 
-  deleteArticle(article: any){
-    this.modifiedCommand.push({
-      "is_deleted": "true",
-      "is_created": "false",  
-      "id_article": article.id_article,
-      "nbr_caisses": article.quantite_caisse,
-      "unite": article.quantite_unite
-    })
+  cancelUpdate(id_commande: any) {
+    this.mapIsBeingModified.set(id_commande, false);
+    this.modifiedCommand = [];
+    this.nbSelects = []
+    this.articles = []
+    
   }
+
 
 
   validateUpdate(command: any){
@@ -93,12 +121,18 @@ export class CommandsListComponent implements OnInit {
     }) => {
       let nbArticles = document.getElementById(`nbArticles${element.id_article}`);
       let article = document.getElementById(`article${element.id_article}`);
-
-      if (nbArticles instanceof HTMLInputElement && article instanceof HTMLInputElement) {
+      let isDeleted = document.getElementById(`isDeleted${element.id_article}`);
+      
+      
+      if (nbArticles instanceof HTMLInputElement && article instanceof HTMLInputElement && isDeleted instanceof HTMLInputElement) {
+        
         let articleParse = JSON.parse(article.value)
+        let isDeletedValue = isDeleted.checked ? 'true' : 'false';
+        console.log(isDeletedValue);
+        
         if(element.quantite_unite != 0){
           this.modifiedCommand.push({
-            "is_deleted": "false",
+            "is_deleted": isDeletedValue,
             "is_created": "false",  
             "id_article": element.id_article,
             "nbr_caisses": 0,
@@ -106,7 +140,7 @@ export class CommandsListComponent implements OnInit {
           })
         }else{
           this.modifiedCommand.push({
-            "is_deleted": "false",
+            "is_deleted": isDeletedValue,
             "is_created": "false",  
             "id_article": element.id_article,
             "nbr_caisses": nbArticles.value,
@@ -115,6 +149,36 @@ export class CommandsListComponent implements OnInit {
         }
       }
     });
+
+    for (let i = 0; i < this.nbSelects.length; i++) {
+      let nbArticlesAdd = document.getElementById(`nbArticlesAdd${i}`) as HTMLInputElement;
+      let articleSelect = document.getElementById(`articleSelect${i}`) as HTMLSelectElement;
+    
+      if (nbArticlesAdd && articleSelect) {
+        const articleSelectObj = JSON.parse(articleSelect.value);
+    
+        if (articleSelectObj.type == 'C') {
+          this.modifiedCommand.push({
+            "is_deleted": "false",
+            "is_created": "true",
+            "id_article": articleSelectObj.article,
+            "nbr_caisses": nbArticlesAdd.value,
+            "unite": 0
+          });
+        } else {
+          this.modifiedCommand.push({
+            "is_deleted": "false",
+            "is_created": "true",
+            "id_article": articleSelectObj.article,
+            "nbr_caisses": 0,
+            "unite": nbArticlesAdd.value
+          });
+        }
+      }
+    }
+
+    console.log(this.modifiedCommand);
+    
     
     const token = this.tokenService.getToken();
     const formData = {
@@ -134,15 +198,23 @@ export class CommandsListComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log('Réponse de l\'API:', response);
+          this.getCommands(this.selectedTourneeId);
+          this.modifiedCommand = [];
+          this.nbSelects = []
+          this.articles = []
         },
         (error) => {
           console.error('Erreur lors de la soumission du formulaire : ', error);
+          this.getCommands(this.selectedTourneeId);
+          this.modifiedCommand = [];
+          this.nbSelects = []
+          this.articles = []
         }
       );
     
-    this.modifiedCommand = [];
+    
     this.mapIsBeingModified.set(command.id_commande, false);
-    this.getCommands(this.selectedTourneeId);
+    
   }
 }
 

@@ -1,7 +1,7 @@
-<div>
+<div class="commandListContainer">
     <a routerLink="/nouvelleCommande">Créer une commande</a>
     <h1 class="title">Commands</h1>
-    <div>
+    <div class="tourneeContainer">
         <p>Tournée:</p>
         <select required (change)="onTourneeChange($event)">
             <option selected disabled>choisir tournée</option>
@@ -14,9 +14,9 @@
                 <button ngbAccordionButton>Client : {{ command.client }}</button>
             </h2>
             <div ngbAccordionCollapse>
-                <button *ngIf="mapIsBeingModified.get(command.id_commande) == false;" (click)="setToUpdate(command.id_commande)">modifier</button>
+                <button *ngIf="mapIsBeingModified.get(command.id_commande) == false;" (click)="setToUpdate(command)">modifier</button>
                 <div *ngIf="mapIsBeingModified.get(command.id_commande) == true;">
-                    <button>Annuler</button>
+                    <button (click)="cancelUpdate(command.id_commande)">Annuler</button>
                     <button (click)="validateUpdate(command)">Valider</button>
                 </div>
                 <div ngbAccordionBody>
@@ -29,17 +29,25 @@
                             </div>
                             <div *ngIf="mapIsBeingModified.get(command.id_commande) == true;">
                                 <div *ngIf="article.quantite_unite != 0">
-                                    <input value="{{ article.quantite_unite }}" required type="number" id="nbArticles{{ article.id_article }}" name="nbArticles"/>
+                                    <input value="{{ article.quantite_unite }}" required type="number" class="numberInput" id="nbArticles{{ article.id_article }}" name="nbArticles"/>unités
                                     <input value="{{ article | json }}" id="article{{ article.id_article }}" type=hidden/>
-                                    <p>unites</p>
                                 </div>
                                 <div *ngIf="article.quantite_caisse!= 0">
-                                    <input value="{{ article.quantite_caisse }}" required type="number" id="nbArticles{{ article.id_article }}" name="nbArticles"/>
+                                    <input value="{{ article.quantite_caisse }}" required type="number" class="numberInput" id="nbArticles{{ article.id_article }}" name="nbArticles"/>caisses
                                     <input value="{{ article | json }}" id="article{{ article.id_article }}" type=hidden/>
-                                    <p>caisses</p>
                                 </div>
-                                <button (click)="deleteArticle(article)"></button>
+                                supprimer <input type="checkbox" id="isDeleted{{ article.id_article }}">
                             </div>
+                        </div>
+                        <div *ngIf="mapIsBeingModified.get(command.id_commande) == true;">
+                            <div *ngFor="let select of nbSelects; let i = index">
+                                <select required id="articleSelect{{i}}">
+                                    <option *ngFor="let article of articles" value="{{ article | json }}">{{ article.nom }} ({{ article.type }})</option>
+                                </select>
+                                <input required type="number" class="numberInput" id="nbArticlesAdd{{i}}" name="nbArticles"/>
+                            </div>
+                            <button (click)="ajouter1SelectArticle()">ajouter un champ</button>
+                            <button (click)="enlever1SelectArticle()">enlever un champ</button>
                         </div>
                     </ng-template>
                 </div>

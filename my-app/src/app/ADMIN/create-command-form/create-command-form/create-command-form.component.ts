@@ -27,8 +27,6 @@ export class CreateCommandFormComponent {
     this.commandForm.addControl(`nbArticles${this.nbSelects.length}`, new FormControl('', Validators.required));
     this.nbSelects.push({type : "select"});
     
-    console.log(this.nbSelects.length);
-    
   }
 
   enlever1SelectArticle(): void {
@@ -37,7 +35,6 @@ export class CreateCommandFormComponent {
       this.commandForm.removeControl(`article${this.nbSelects.length}`)
       this.commandForm.removeControl(`nbArticles${this.nbSelects.length}`);
     }
-    console.log(this.nbSelects.length);
     
   }
   ngOnInit(): void {
