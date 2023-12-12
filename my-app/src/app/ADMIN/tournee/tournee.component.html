@@ -1,50 +1,57 @@
 <div>
 
   <h2>Voici la liste des tournées</h2>
+  
+  <!-- Bouton pour créer une nouvelle tournée (visible seulement pour les admins) -->
   <button *ngIf="userIsAdmin" [routerLink]="['/tournee/creation']">Créer une nouvelle tournée</button>
 
   <ul>
     <li *ngFor="let tournee of tourneesData">
       <div>
+        <!-- Informations sur la tournée -->
         {{ tournee.nom }} - Livreur: {{ tournee.livreur }}
         
-        <!-- Liste déroulante des livreurs -->
+        <!-- Liste déroulante des livreurs (visible seulement pour les admins) -->
         <select *ngIf="userIsAdmin" [(ngModel)]="selectedLivreurId[tournee.id]">
           <option *ngFor="let livreur of livreurs" [value]="livreur.id_user">{{ livreur.username }}</option>
         </select>
         
-        <!-- Bouton pour assigner la tournée -->
+        <!-- Bouton pour assigner la tournée (visible seulement pour les admins) -->
         <button *ngIf="userIsAdmin" (click)="assignerTournee(tournee.id)">Assigner la tournée</button>
         
+        <!-- Bouton pour afficher les commandes -->
         <button (click)="toggleDetails(tournee)">Afficher les commandes</button>
+        
+        <!-- Flèche indiquant l'état des détails -->
         <span [ngClass]="{'arrow-up': tournee.showDetails, 'arrow-down': !tournee.showDetails}"></span>
       </div>
       <div *ngIf="tournee.showDetails">
-        <!-- Les détails de la tournée ici -->
+        <!-- Détails de la tournée -->
         <div *ngIf="commandesData[tournee.id] && commandesData[tournee.id].length > 0">
           <h4>Commandes de la tournée </h4>
           <ul>
             <li *ngFor="let commande of commandesData[tournee.id]">
               <div>
-                <strong>   Nom du client : {{ commande.client }} - Adresse : {{commande.client_adresse}} </strong> 
+                <!-- Informations sur le client et son adresse -->
+                <strong>Nom du client : {{ commande.client }} - Adresse : {{commande.client_adresse}}</strong> 
 
-               
               </div>
               <div>
                 <h5>Details de la commande de {{commande.client}} :</h5>
                 <ul>
                   <li *ngFor="let article of commande.articles">
-                      <div>
-                          <p>Nom de l'article:</p> <strong>{{ article.nom_article }}</strong> 
-                      </div>
-                      <div>
-                          <strong>Nombre d'articles:</strong> {{ article.nombre_articles }}
-                      </div>
-                      <div>
-                          <strong>Quantité par unité:</strong> {{ article.quantite_unite }}
-                      </div>
+                    <div>
+                      <!-- Détails de l'article -->
+                      <p>Nom de l'article:</p> <strong>{{ article.nom_article }}</strong> 
+                    </div>
+                    <div>
+                      <strong>Nombre d'articles:</strong> {{ article.nombre_articles }}
+                    </div>
+                    <div>
+                      <strong>Quantité par unité:</strong> {{ article.quantite_unite }}
+                    </div>
                   </li>
-              </ul>
+                </ul>
               </div>
             </li>
           </ul>
