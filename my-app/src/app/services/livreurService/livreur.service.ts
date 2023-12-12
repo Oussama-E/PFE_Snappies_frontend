@@ -43,9 +43,8 @@ export class LivreurService {
       password: password,
     };
 
-    return this.http.post<any>(`${this.apiUrl}/create_livreur`, livreurData, { headers });
+    return this.http.post<any>(`http://localhost:8000/login/create_livreur`, livreurData, { headers });
   }
-
   marquerCommeLivre(idCommande: number): Observable<any> {
     const url = `${this.apiUrl}/commande_livre/${idCommande}`;
 
