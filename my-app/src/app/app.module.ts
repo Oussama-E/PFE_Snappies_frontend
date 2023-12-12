@@ -8,6 +8,7 @@ import { CreateCommandFormComponent } from './ADMIN/create-command-form/create-c
 
 import { ToastrModule } from 'ngx-toastr';
 import { NgModule, isDevMode } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatMenuModule } from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +41,7 @@ import { CreateLivreurComponent } from './ADMIN/create-livreur/create-livreur.co
     CreateTourneePageComponent,
     AllLivreursComponent,
     CreateLivreurComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ import { CreateLivreurComponent } from './ADMIN/create-livreur/create-livreur.co
     ReactiveFormsModule,
     NgbModule,
     CommonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

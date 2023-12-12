@@ -30,29 +30,31 @@ p {
   align-items: center;
   justify-content: space-between;
   background-color: #1976d2;
-  /* Modification : couleur de fond du toolbar */
   color: white;
   padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .toolbar img {
-  margin: 0 16px;
+  margin: auto;
 }
 
-.toolbar #twitter-logo {
-  height: 40px;
-  margin: 0 8px;
+.toolbar button {
+  color: white;
 }
 
-.toolbar #youtube-logo {
-  height: 40px;
-  margin: 0 16px;
+.toolbar button:hover {
+  background-color: azure;
 }
 
-.toolbar #twitter-logo:hover,
-.toolbar #youtube-logo:hover {
-  opacity: 0.8;
+.toolbar a {
+  color: white;
 }
+
+.toolbar a:hover {
+  text-decoration: underline;
+}
+
 
 .content {
   display: flex;
