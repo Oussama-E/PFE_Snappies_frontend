@@ -15,7 +15,12 @@
     <li *ngFor="let tournee of tourneesData">
       <div>
         <!-- Informations sur la tournée -->
-        {{ tournee.nom }} - Livreur: {{ tournee.livreur }}
+       <section> <strong>{{ tournee.nom }}</strong> 
+        <section>
+          Assigné à {{ tournee.livreur }}
+        </section>
+      
+      </section> 
 
         <!-- Liste déroulante des livreurs (visible seulement pour les admins) -->
         <select *ngIf="userIsAdmin" [(ngModel)]="selectedLivreurId[tournee.id]">
@@ -24,21 +29,23 @@
           </option>
         </select>
 
+        <section>
         <!-- Bouton pour assigner la tournée (visible seulement pour les admins) -->
-        <button *ngIf="userIsAdmin" (click)="assignerTournee(tournee.id)">
+        <button *ngIf="userIsAdmin" (click)="assignerTournee(tournee.id)" class="btn btn-dark">
           Assigner
         </button>
 
         <!-- Bouton pour afficher les commandes -->
-        <button (click)="toggleDetails(tournee)">Afficher les commandes</button>
+        <button (click)="toggleDetails(tournee)" class="btn btn-success">Afficher les commandes</button>
+      </section>
 
         <!-- Flèche indiquant l'état des détails -->
-        <span
+        <!-- <span
           [ngClass]="{
             'arrow-up': tournee.showDetails,
             'arrow-down': !tournee.showDetails
           }"
-        ></span>
+        ></span> -->
       </div>
       <div *ngIf="tournee.showDetails">
         <!-- Détails de la tournée -->
@@ -52,7 +59,7 @@
             <li *ngFor="let commande of commandesData[tournee.id]">
               <!-- Informations sur le client et son adresse -->
               <strong
-                >Nom du client : {{ commande.client }} - Adresse :
+                >Client : {{ commande.client }},
                 {{ commande.client_adresse }}</strong
               >
 
@@ -61,16 +68,15 @@
                 <li *ngFor="let article of commande.articles">
                   <div>
                     <!-- Détails de l'article -->
-                    <p>Nom de l'article:</p>
-                    <strong>{{ article.nom_article }}</strong>
+                    Article: {{ article.nom_article }}
                   </div>
                   <div>
-                    <strong>Nombre d'articles:</strong>
-                    {{ article.nombre_articles }}
+                    Nombre d'articles:
+                    <strong>{{ article.nombre_articles }}</strong>
                   </div>
                   <div>
-                    <strong>Quantité par unité:</strong>
-                    {{ article.quantite_unite }}
+                    Quantité par unité:
+                    <strong>{{ article.quantite_unite }}</strong>
                   </div>
                 </li>
               </ul>

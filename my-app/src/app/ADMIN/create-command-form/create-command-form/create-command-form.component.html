@@ -1,33 +1,33 @@
-<div class="commandFormDiv">
+<div class="form-container">
+    <h2><strong>Créer une commande</strong></h2>
     <form [formGroup]="commandForm" (ngSubmit)="onSubmit()">
-        <div class="selectCommandForm">
-            <p>Client:</p>
-            <select formControlName="client" required>
-                <option value="" disabled selected>Select your option</option>
-                <option *ngFor="let client of clients" value="{{ client.id }}">{{ client.client_nom }}</option>
-            </select>
+      <div class="form-group">
+        <label for="client">Client:</label>
+        <select id="client" formControlName="client" required style="width: 64%;">
+          <option value="" disabled selected>Selectionner</option>
+          <option *ngFor="let client of clients" value="{{ client.id }}">{{ client.client_nom }}</option>
+        </select >
+      </div>
+      <div class="form-group">
+        <label for="article">Article:</label>
+        <div *ngFor="let select of nbSelects; let i = index">
+          <select id="article{{ i }}" formControlName="article{{ i }}" required>
+            <option value="" disabled selected>Selectionner</option>
+            <option *ngFor="let article of articles" value="{{ article | json }}">{{ article.nom }} ({{ article.type }})</option>
+          </select>
+          <input required type="number" id="nbArticles{{ i }}" formControlName="nbArticles{{ i }}" name="nbArticles"/>
         </div>
-        <div class="selectCommandForm">
-            <p>Article:</p>
-            <div *ngFor="let select of nbSelects; let i = index">
-                <select formControlName="article{{ i }}" required>
-                    <option value="" disabled selected>Select your option</option>
-                    <option *ngFor="let article of articles" value="{{ article | json }}">{{ article.nom }} ({{ article.type }})</option>
-                </select>
-                <input required type="number" id="nbArticles" formControlName="nbArticles{{ i }}" name="nbArticles"/>
-            </div>
-            <button (click)="ajouter1SelectArticle()">ajouter un champ</button>
-            <button (click)="enlever1SelectArticle()">enlever un champ</button>
-        </div>
-        <div class="selectCommandForm">
-            <p>Tournée:</p>
-            <select formControlName="tournee" required>
-                <option value="" disabled selected>Select your option</option>
-                <option *ngFor="let tournee of tournees" value="{{ tournee.id }}">{{ tournee.nom }}</option>
-            </select>
-        </div>
-        <div>
-            <button class="commandFormSubmitButton" type="submit">Créer la commande</button>
-        </div>
+        <button (click)="ajouter1SelectArticle()">ajouter un champ</button>
+        <button (click)="enlever1SelectArticle()">enlever un champ</button>
+      </div>
+      <div class="form-group">
+        <label for="tournee">Tournée:</label>
+        <select id="tournee" formControlName="tournee" required style="width: 64%;">
+          <option value="" disabled selected>Selectionner</option>
+          <option *ngFor="let tournee of tournees" value="{{ tournee.id }}">{{ tournee.nom }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success">Créer la commande</button>
     </form>
-</div>  
+  </div>
+  
