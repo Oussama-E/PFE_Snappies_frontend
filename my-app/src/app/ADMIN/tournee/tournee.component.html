@@ -1,13 +1,7 @@
 <div>
-  <button
-    id="createtourne"
-    *ngIf="userIsAdmin"
-    [routerLink]="['/tournee/creation']"
-  >
-    Créer une nouvelle tournée
-  </button>
+  <button  [routerLink]="['/tournee/creation']">Créer une nouvelle tournée</button>
   <hr />
-  <h2>Voici la liste des tournées</h2>
+  <h2>Vos tournées se trouvent ici</h2>
 
   <!-- Bouton pour créer une nouvelle tournée (visible seulement pour les admins) -->
 

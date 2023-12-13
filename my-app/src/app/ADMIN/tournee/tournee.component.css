@@ -75,3 +75,24 @@ h4 {
 li > div:last-child ul li div {
   margin-top: 5px;
 }
+
+button {
+  font-family: sans-serif;
+  background-color: green;
+  display: block;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
