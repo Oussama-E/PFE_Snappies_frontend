@@ -202,7 +202,7 @@ export class CommandsListComponent implements OnInit {
       console.log(command.id_commande_modifie);
       apiUrl = 'http://localhost:8000/commande/update_commande_admin/' + command.id_commande_modifie;
     }
-    
+     
 
     this.http.put(apiUrl, formData,{
       headers: {

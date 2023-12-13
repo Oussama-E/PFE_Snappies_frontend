@@ -2,6 +2,7 @@ import { Component, OnInit  } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-command-form',
@@ -18,7 +19,7 @@ export class CreateCommandFormComponent {
   public articles: any[] = [{name : "pas de données"}];
   public tournees: any[] = [{name : "pas de données"}];
   public clients: any[] = [{name : "pas de données"}];
-  constructor(private http: HttpClient, private tokenService: TokenService) { }
+  constructor(private http: HttpClient, private tokenService: TokenService , private routerService : Router) { }
 
   
 
@@ -139,11 +140,12 @@ export class CreateCommandFormComponent {
           'Authorization': 'Token ' + token, 
           'Content-Type': 'application/json'
         }
-        
       })
         .subscribe(
           (response) => {
             console.log('Réponse de l\'API:', response);
+            this.routerService.navigate(['/commandes']);
+
           },
           (error) => {
             console.error('Erreur lors de la soumission du formulaire : ', error);

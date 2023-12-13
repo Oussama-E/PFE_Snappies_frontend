@@ -67,6 +67,34 @@
 	}
 }
 
+.selectCommandForm{
+    text-align: start;
+    padding: 20px;
+}
 
+select{
+    padding: 10px;
+    border-radius: 10px;
+    padding-right: 200px;
+    margin-right: 10px;
+}
+
+.commandFormSubmitButton {
+    font-size: large;
+    width: 100%;
+    margin-top: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #d2b619;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.commandFormSubmitButton:hover {
+    background-color: #b9a017;
+}
 
 

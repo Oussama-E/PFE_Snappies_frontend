@@ -1,0 +1,17 @@
+<!-- create-client.component.html -->
+
+<div class="createClientFormDiv">
+    <h2>Entrez les informations du client</h2>
+    <form (ngSubmit)="createClient()">
+      <label class="createClientFormLabel" for="nom">Nom :</label>
+      <input class="createClientFormInput" type="text" id="nom" [(ngModel)]="clientName" name="clientName" required>
+  
+      <label id="createClientAdresseLabel" class="createClientFormLabel" for="adresse">Adresse :</label>
+      <textarea id="createClientAdresseInput" class="createClientFormInput" rows="5" id="adresse" [(ngModel)]="clientAdresse" name="adresse" required></textarea>
+  
+      <label id="createClientTelephoneLabel" class="createClientFormLabel" for="telephone">Téléphone :</label>
+      <input id="createClientTelephoneInput" class="createClientFormInput" type="tel" id="telephone" [(ngModel)]="clientTelephone" name="telephone" required>
+  
+      <button class="createClientFormSubmitButton" type="submit">Créer un client</button>
+    </form>
+</div>

@@ -9,6 +9,8 @@ import { LivreurPageComponent } from './LIVREUR/livreur-page/livreur-page.compon
 import { CreateTourneePageComponent } from './ADMIN/create-tournee-page/create-tournee-page.component';
 import { AllLivreursComponent } from './ADMIN/all-livreurs/all-livreurs.component';
 import { CreateLivreurComponent } from './ADMIN/create-livreur/create-livreur.component';
+import { ClientsComponent } from './ADMIN/clients/clients.component';
+import { CreateClientPageComponent } from './ADMIN/create-client-page/create-client-page.component';
 
 const routes: Routes = [ 
   { path: '', component: LoginFormComponent},
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'tournee/creation', component: CreateTourneePageComponent },
   { path: 'livreurs', component: AllLivreursComponent },
   { path: 'livreur/create', component: CreateLivreurComponent },
+  { path: 'clients', component: ClientsComponent },
+  { path: 'client/create', component: CreateClientPageComponent },
 
 ];
 

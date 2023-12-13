@@ -1,0 +1,29 @@
+<!-- clients.component.html -->
+<div>
+    <h1>Clients avec aucune commande : </h1>
+    <div *ngFor="let client of clients">
+        <p>
+            {{ client.client_nom }} - {{ client.telephone }} - {{ client.adresse }}
+        </p>
+
+        <!-- Bouton pour afficher/masquer le formulaire -->
+        <button (click)="updateClient(client.id)">Modifier</button>
+
+        <!-- Formulaire de mise à jour conditionnel -->
+        <form *ngIf="isUpdateFormOpen[client.id]" (submit)="updateClient(client.id)">
+            <label>Nom:</label>
+            <input [(ngModel)]="clientToUpdate.name" name="name" required>
+
+            <label>Téléphone:</label>
+            <input [(ngModel)]="clientToUpdate.numero_telephone" name="numero_telephone" required>
+
+            <label>Adresse:</label>
+            <input [(ngModel)]="clientToUpdate.adresse" name="adresse" required>
+
+            <button type="submit">Mettre à jour</button>
+        </form>
+
+        <button (click)="deleteClient(client.id)">Supprimer</button>
+    </div>
+    <button *ngIf="userIsAdmin" [routerLink]="['/client/create']">Créer un client</button>
+</div>

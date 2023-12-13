@@ -45,13 +45,14 @@ export class LoginFormComponent {
             this.checkUserRole(data.role);
 
             console.log(data.username);
+            console.log(this.tokenService.getToken());
+
           },
           (error) => {
             console.error('Erreur lors de la soumission du formulaire : ', error);
           }
         );
 
-        console.log(this.tokenService.getToken());
         
     }
     
@@ -63,6 +64,7 @@ export class LoginFormComponent {
       this.isAdmin = false;
       console.log('Connecté en tant que livreur.');
     } else if (role === 'admin') {
+   
       this.tokenService.isAdmin$.subscribe(newValue => {
         this.isAdmin = true;
       });

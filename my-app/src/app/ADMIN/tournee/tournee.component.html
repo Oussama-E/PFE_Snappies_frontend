@@ -1,5 +1,13 @@
 <div>
   <button  [routerLink]="['/tournee/creation']">Créer une nouvelle tournée</button>
+  <br>
+  <button
+    id="createtourne"
+    *ngIf="userIsAdmin"
+    (click)="restaurerLivraisons()"
+  >
+    restaurer les livraison des tournees
+  </button>
   <hr />
   <h2>Vos tournées se trouvent ici</h2>
 
@@ -16,7 +24,6 @@
       
       </section> 
 
-        <!-- Liste déroulante des livreurs (visible seulement pour les admins) -->
         <select *ngIf="userIsAdmin" [(ngModel)]="selectedLivreurId[tournee.id]">
           <option *ngFor="let livreur of livreurs" [value]="livreur.id_user">
             {{ livreur.username }}
@@ -24,10 +31,12 @@
         </select>
 
         <section>
-        <!-- Bouton pour assigner la tournée (visible seulement pour les admins) -->
+        
         <button *ngIf="userIsAdmin" (click)="assignerTournee(tournee.id)" class="btn btn-dark">
           Assigner
         </button>
+
+        <button *ngIf="userIsAdmin" (click)="deleteTourneeById(tournee.id)" class="btn btn-success" >Supprimer la tournée</button>
 
         <!-- Bouton pour afficher les commandes -->
         <button (click)="toggleDetails(tournee)" class="btn btn-success">Afficher les commandes</button>
@@ -56,7 +65,7 @@
                 >Client : {{ commande.client }},
                 {{ commande.client_adresse }}</strong
               >
-
+              
               <h5>Details de la commande de {{ commande.client }} :</h5>
               <ul>
                 <li *ngFor="let article of commande.articles">
@@ -64,16 +73,27 @@
                     <!-- Détails de l'article -->
                     Article: {{ article.nom_article }}
                   </div>
-                  <div>
-                    Nombre d'articles:
-                    <strong>{{ article.nombre_articles }}</strong>
+
+                  <div *ngIf="article.quantite_caisse !== 0">
+                    <div>
+                      Nombre de caisses :
+                      <strong>{{ article.quantite_caisse }} de ({{article.nombre_articles}})</strong>
+                    </div>
                   </div>
-                  <div>
-                    Quantité par unité:
-                    <strong>{{ article.quantite_unite }}</strong>
+                  
+                  <div *ngIf="article.quantite_unite !== 0">
+                    <div>
+                      Quantité par unité:
+                      <strong>{{ article.quantite_unite }}</strong>
+                    </div>
                   </div>
+
                 </li>
               </ul>
+              <div [ngStyle]="{'color': commande.est_livre ? 'green' : 'orange'}">
+           <strong>État de livraison :</strong>
+            <strong>{{ commande.est_livre ? 'Livrée' : 'Non livrée' }} </strong>
+          </div>
             </li>
           </ul>
         </section>

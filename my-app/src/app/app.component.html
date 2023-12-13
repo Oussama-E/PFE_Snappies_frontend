@@ -23,25 +23,25 @@
     <div class="toolbar" role="banner">
       <button mat-button [matMenuTriggerFor]="menuAdmin" *ngIf="isConnected">Menu</button>
     <mat-menu #menuAdmin="matMenu">
-      <button mat-menu-item routerLink="/livreur_page"> <!-- *ngIf="!isAdmin" -->
-        <mat-icon>map</mat-icon>
-        <span>Voir mes tournées</span>
-      </button>
-      <button mat-menu-item routerLink="/tournees">  <!-- *ngIf="isAdmin" -->
+      <button mat-menu-item routerLink="/tournees">  
         <mat-icon>map</mat-icon>
         <span>Voir les tournées</span>
       </button>
-      <button mat-menu-item routerLink="/livreurs">  <!-- *ngIf="isAdmin" -->
+      <button mat-menu-item routerLink="/livreurs">  
         <mat-icon>people</mat-icon>
         <span>Vos livreurs</span>
       </button>
-      <button mat-menu-item routerLink="/commandes"> <!-- *ngIf="isAdmin" -->
+      <button mat-menu-item routerLink="/commandes"> 
         <mat-icon>shopping_cart</mat-icon>
         <span>Vos commandes</span>
       </button>
       <button mat-menu-item routerLink="/articles">
         <mat-icon>inventory</mat-icon>
         <span>Vos articles</span>
+      </button>
+      <button mat-menu-item routerLink="/clients">
+        <mat-icon>inventory</mat-icon>
+        <span>Clients</span>
       </button>
       <button
         mat-menu-item

@@ -14,12 +14,15 @@ export class LivreurService {
 
 
 
+//https://pfe-backend-souli-dev.azurewebsites.net/
+
   getAllLivreurs(): Observable<any> {
     const token = this.tokenService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
     return this.http.get<any>(`${this.apiUrl}/getAllLivreurs`, { headers });
   }
 
+  
   getTourneesLivreur(): Observable<any[]> {
     const token = this.tokenService.getToken();
     const livreurUsername = this.tokenService.getLivreurUsername();
@@ -46,9 +49,14 @@ export class LivreurService {
     return this.http.post<any>(`http://localhost:8000/login/create_livreur`, livreurData, { headers });
   }
   marquerCommeLivre(idCommande: number): Observable<any> {
-    const url = `${this.apiUrl}/commande_livre/${idCommande}`;
+    const token = this.tokenService.getToken();
+    console.log(token);
+    const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
 
-    // Utilisez HttpClient pour envoyer une requête PUT à votre API
-    return this.http.put<any>(url, {});
+    const url = `${this.apiUrl}/update_livraison/${idCommande}`;
+
+    return this.http.patch<any>(url, {} , {headers});
   }
+ 
+
 }
