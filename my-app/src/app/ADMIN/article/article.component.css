@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+h2{
+  text-align: center;
+}
+
 svg.material-icons {
   height: 24px;
   width: auto;
@@ -114,12 +118,66 @@ a:hover {
 }
 
 .form-container {
-  border: 1px solid #ccc;
-  margin: 10px;
-  padding: 10px;
+  width: 80%;
+  margin: 0 auto;
   background-color: #f0f0f0;
-  border-bottom: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
 }
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'><path fill='%23333' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z'/></svg>") no-repeat right 10px center;
+  background-size: 15px;
+}
+
+option {
+  padding: 10px;
+}
+
+.btn.btn-success {
+  font-family: sans-serif;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.fas {
+  margin-right: 10px;
+}
+
 
 .unit {
   color: #333;
@@ -148,11 +206,24 @@ a:hover {
 }
 
 /* Positionner le bouton supprimer en haut à droite */
+.card-body {
+  position: relative; /* ajouté */
+}
+
 .btn.btn-danger {
   position: absolute;
   top: 10px;
   right: 10px;
-  margin-left: 10px; /* Ajouté */
+  margin-left: 10px; 
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  color: #eeeeee;
+  font-weight: 600;
+  font-size: 15px;
+  background-color: #153f00;
+  padding: 15px 50px;
 }
 
 /* Ajuster la taille des tuiles en fonction de la largeur de l'écran */

@@ -20,6 +20,7 @@ h2 {
   color: #333;
 }
 
+<<<<<<< HEAD
 /* Bouton de création de tournée */
 button {
   padding: 10px;
@@ -33,6 +34,56 @@ button {
 ul {
   list-style: none;
   padding: 0;
+=======
+/* Tour Item Styles */
+li {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+li > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'><path fill='%23333' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z'/></svg>") no-repeat right 10px center;
+  background-size: 15px;
+}
+
+option {
+  padding: 10px;
+}
+
+
+button {
+  font-family: sans-serif;
+  background-color: green;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#createtourne{
+  font-size: 15px;
+  width: 25%;
+}
+
+select, button {
+  margin-left: 10px;
+>>>>>>> 77fcce9b184daa4d642e1a03f29219368529b053
 }
 
 /* Élément de la liste des tournées */

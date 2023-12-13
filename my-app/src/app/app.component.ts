@@ -9,7 +9,7 @@ import { TokenService } from './services/token.service';
 export class AppComponent {
   title = 'my-app';
   isConnected: any
-  isAdmin:any
+  isAdmin: any = false;
   constructor(private tokenService: TokenService) { }
 
   ngOnInit() {
@@ -17,10 +17,11 @@ export class AppComponent {
       this.isConnected = newValue;
     });
 
-    this.tokenService.isAdmin$.subscribe(newValue => {
-      this.isAdmin = newValue
-    })
-  }
+    this.tokenService.uservalue$.subscribe((newValue: any) => { // Ajoutez cette ligne
+      this.isAdmin = this.tokenService.isAdmin() || false;
+      console.log("isAdmin=", this.isAdmin);
+  });
+}
  
   disconnect(): void {
     this.tokenService.removeToken();

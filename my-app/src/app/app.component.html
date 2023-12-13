@@ -21,32 +21,52 @@
   <body>
     <!-- Toolbar -->
     <div class="toolbar" role="banner">
+      <button mat-button [matMenuTriggerFor]="menuAdmin" *ngIf="isConnected">Menu</button>
+    <mat-menu #menuAdmin="matMenu">
+      <button mat-menu-item routerLink="/livreur_page"> <!-- *ngIf="!isAdmin" -->
+        <mat-icon>map</mat-icon>
+        <span>Voir mes tournées</span>
+      </button>
+      <button mat-menu-item routerLink="/tournees">  <!-- *ngIf="isAdmin" -->
+        <mat-icon>map</mat-icon>
+        <span>Voir les tournées</span>
+      </button>
+      <button mat-menu-item routerLink="/livreurs">  <!-- *ngIf="isAdmin" -->
+        <mat-icon>people</mat-icon>
+        <span>Vos livreurs</span>
+      </button>
+      <button mat-menu-item routerLink="/commandes"> <!-- *ngIf="isAdmin" -->
+        <mat-icon>shopping_cart</mat-icon>
+        <span>Vos commandes</span>
+      </button>
+      <button mat-menu-item routerLink="/articles">
+        <mat-icon>inventory</mat-icon>
+        <span>Vos articles</span>
+      </button>
+      <button
+        mat-menu-item
+        routerLink="/"
+        *ngIf="isConnected"
+        (click)="disconnect()"
+      >
+        <mat-icon>logout</mat-icon>
+        <span>Déconnexion</span>
+      </button>
+    </mat-menu>
+
       <a routerLink="/">
-      <img
-        width="40"
-        alt="Logo"
-        src="../assets/images/61df4d08f2e542577c9b93f7_navbar__img-logo.png"
-      />
+        <img
+          width="40"
+          alt="Logo"
+          src="../assets/images/61df4d08f2e542577c9b93f7_navbar__img-logo.png"
+        />
       </a>
+      
+      <p>SNAPPIES LIVREUR</p>
     </div>
 
 
-      <!-- Menu déroulant pour l'admin-->
-      <ng-container *ngIf="isConnected ">
-
-      <button mat-button [matMenuTriggerFor]="menuAdmin">Menu</button>
-      <mat-menu #menuAdmin="matMenu">
-        <button  mat-menu-item routerLink="/tournees" >Voir les tournées</button>
-        <button mat-menu-item routerLink="/livreurs" >Vos livreurs</button>
-        <button mat-menu-item routerLink="/commandes" >Vos commandes</button>
-        <button mat-menu-item routerLink="/articles" >Vos articles</button>
-        <button mat-menu-item routerLink="/" *ngIf="isConnected" (click)="disconnect()">Déconnexion</button>
-      </mat-menu>
-    </ng-container>
-
-
-
-      <div class="spacer"></div>
+    <div class="spacer"></div>
 
     <div class="content" role="main">
       <router-outlet></router-outlet>

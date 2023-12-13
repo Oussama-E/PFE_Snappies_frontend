@@ -81,6 +81,13 @@ onSubmit() {
   }
 }
 
+confirmAdd() {
+  let result = confirm("Voulez-vous vraiment ajouter cet article à votre inventaire ?");
+  if (result) {
+    this.onSubmit();
+  }
+}
+
   fetchArticles() {
     const headers = new HttpHeaders({
       'Authorization': 'Token 0aa1967b91c4c1232cf87c8c6373a035d08255d2'

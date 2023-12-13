@@ -1,7 +1,7 @@
 <!-- livreur-creation.component.html -->
 
 <div class="createLivreurFormDiv">
-    <h2>Création de livreur</h2>
+    <h2>Entrez les informations du livreur</h2>
     <form (ngSubmit)="createLivreur()">
       <label class="createLivreurFormLabel" for="username">Nom d'utilisateur :</label>
       <input class="createLivreurFormInput" type="text" id="username" [(ngModel)]="livreurUsername" name="username" required>
@@ -9,7 +9,7 @@
       <label id="createLivreurPasswordLabel" class="createLivreurFormLabel" for="password">Mot de passe :</label>
       <input id="createLivreurPasswordInput" class="createLivreurFormInput" type="password" id="password" [(ngModel)]="livreurPassword" name="password" required>
   
-      <button class="createLivreurFormSubmitButton" type="submit">Créer le livreur</button>
+      <button class="createLivreurFormSubmitButton" type="submit">Créer un compte</button>
     </form>
   </div>
   
