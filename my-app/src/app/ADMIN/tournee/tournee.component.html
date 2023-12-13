@@ -86,13 +86,13 @@
                       {{ article.quantite_unite }}
                     </div>
                   </div>
-                  
+
                 </li>
               </ul>
-              <div>
-                <strong>État de livraison :</strong>
-                {{ commande.est_livre ? 'Livrée' : 'Non livrée' }}
-              </div>
+              <div [ngStyle]="{'color': commande.est_livre ? 'green' : 'orange'}">
+           <strong>État de livraison :</strong>
+            <strong>{{ commande.est_livre ? 'Livrée' : 'Non livrée' }} </strong>
+          </div>
             </li>
           </ul>
         </section>
