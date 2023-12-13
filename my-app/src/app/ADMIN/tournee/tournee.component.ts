@@ -1,5 +1,6 @@
 // tournee.component.ts
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LivreurService } from 'src/app/services/livreurService/livreur.service';
 import { TourneeService } from 'src/app/services/tourneeService/tournee.service';
 
@@ -17,7 +18,7 @@ export class TourneeComponent implements OnInit {
   userIsAdmin: boolean = true; 
 
 
-  constructor( private tourneeService: TourneeService ,private livreurService: LivreurService) { }
+  constructor( private tourneeService: TourneeService ,private livreurService: LivreurService , private routerService : Router) { }
 
   ngOnInit(): void {
     this.loadLivreurs();
@@ -87,6 +88,7 @@ export class TourneeComponent implements OnInit {
       (response) => {
         console.log('Réponse de l\'API:', response);
         console.log("les commandes ont ete restaure ");
+        location.reload();
       },
       (error) => {
         console.error('Erreur lors de la restauration des livraisons : ', error);

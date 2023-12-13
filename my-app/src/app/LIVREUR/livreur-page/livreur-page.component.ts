@@ -38,6 +38,7 @@ export class LivreurPageComponent implements OnInit {
         this.est_livre=true;
 
         console.log(response.message); 
+        location.reload();
 
       },
       (error) => {

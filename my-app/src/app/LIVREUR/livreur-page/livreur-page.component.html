@@ -33,6 +33,10 @@
                                                 {{ article.nom_article }} - {{ article.nombre_articles }} articles
                                             </li>
                                         </ul>
+                                        <div [ngStyle]="{'color': commande.est_livre ? 'green' : 'orange'}">
+                                            <strong>État de livraison :</strong>
+                                             <strong>{{ commande.est_livre ? 'Livrée' : 'Non livrée' }} </strong>
+                                           </div>
                                     </div>
                                 </li>
                             </ul>
