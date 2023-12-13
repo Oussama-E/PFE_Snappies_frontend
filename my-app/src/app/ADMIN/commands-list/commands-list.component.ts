@@ -83,6 +83,12 @@ export class CommandsListComponent implements OnInit {
   }
 
   setToUpdate(command: any) {
+    this.mapIsBeingModified.forEach((value, key) => {
+      this.mapIsBeingModified.set(key, false);
+    });
+    this.modifiedCommand = [];
+    this.nbSelects = []
+    this.articles = []
     this.mapIsBeingModified.set(command.id_commande, true);
 
     const token = this.tokenService.getToken();
