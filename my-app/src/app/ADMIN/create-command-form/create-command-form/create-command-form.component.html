@@ -12,7 +12,9 @@
             <div *ngFor="let select of nbSelects; let i = index">
                 <select formControlName="article{{ i }}" required>
                     <option value="" disabled selected>Select your option</option>
-                    <option *ngFor="let article of articles" value="{{ article | json }}">{{ article.nom }} ({{ article.type }})</option>
+                    <option *ngFor="let article of articles" value="{{ article | json }}">{{ article.nom }} ({{ article.type }})
+                        <span *ngIf="article.taille !== null">taille : {{ article.taille }}</span>
+                    </option>
                 </select>
                 <input required type="number" id="nbArticles" formControlName="nbArticles{{ i }}" name="nbArticles"/>
             </div>
