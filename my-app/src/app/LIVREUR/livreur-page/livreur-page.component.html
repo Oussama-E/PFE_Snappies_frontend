@@ -23,7 +23,7 @@
                                     <div>
                                         {{ commande.client.name }} - {{ commande.client.adresse }} 
                                         <!-- Condition pour afficher le bouton uniquement si est_livre est false -->
-                                        <button class="marquer-livre" *ngIf="!commande.est_livre" [hidden]="est_livre" (click)="marquerCommeLivre(commande.id_commande)">Marquer comme livrée</button>
+                                        <button class="marquer-livre" *ngIf="!commande.est_livre" (click)="marquerCommeLivre(commande.id_commande)">Marquer comme livrée</button>
                                     </div>
 
                                     <div>

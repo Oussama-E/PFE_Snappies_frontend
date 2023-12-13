@@ -36,6 +36,7 @@ export class LivreurPageComponent implements OnInit {
     this.livreurService.marquerCommeLivre(idCommande).subscribe(
       (response) => {
         this.est_livre=true;
+
         console.log(response.message); 
         
       },

@@ -14,12 +14,15 @@ export class LivreurService {
 
 
 
+
+
   getAllLivreurs(): Observable<any> {
     const token = this.tokenService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
     return this.http.get<any>(`${this.apiUrl}/getAllLivreurs`, { headers });
   }
 
+  
   getTourneesLivreur(): Observable<any[]> {
     const token = this.tokenService.getToken();
     const livreurUsername = this.tokenService.getLivreurUsername();
@@ -46,9 +49,11 @@ export class LivreurService {
     return this.http.post<any>(`http://localhost:8000/login/create_livreur`, livreurData, { headers });
   }
   marquerCommeLivre(idCommande: number): Observable<any> {
-    const url = `${this.apiUrl}/commande_livre/${idCommande}`;
+    const url = `${this.apiUrl}/update_livraison/${idCommande}`;
 
     // Utilisez HttpClient pour envoyer une requête PUT à votre API
-    return this.http.put<any>(url, {});
+    return this.http.patch<any>(url, {});
   }
+
+
 }
