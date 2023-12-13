@@ -6,3 +6,28 @@
     text-align: center;
     margin: 100px;
 }
+
+.article-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 8px;
+    border-top: 1px solid #ccc;
+    /* Ajoutez d'autres styles selon vos besoins */
+}
+
+.article-container p {
+    margin: 0; /* Pour supprimer les marges par défaut des paragraphes */
+    /* Ajoutez d'autres styles selon vos besoins */
+}
+
+.numberInput{
+    width: 50px;
+    margin-right: 10px;
+}
+
+.tourneeContainer{
+    text-align: center;
+    margin-bottom: 50px;
+}
