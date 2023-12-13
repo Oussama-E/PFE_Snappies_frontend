@@ -45,8 +45,7 @@ export class LoginFormComponent {
             this.checkUserRole(data.role);
 
             console.log(data.username);
-            console.log(this.tokenService.getToken());
-
+            this.router.navigate(['tournees'])
           },
           (error) => {
             console.error('Erreur lors de la soumission du formulaire : ', error);
