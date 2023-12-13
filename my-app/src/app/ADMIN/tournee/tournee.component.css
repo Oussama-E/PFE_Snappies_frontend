@@ -82,9 +82,7 @@ button {
   display: block;
   justify-content: center;
   text-align: center;
-  margin: auto;
-  width: 50%;
-  height: 50px;
+  margin: 10px;
   border: none;
   border-radius: 10px;
   color: white;
@@ -95,4 +93,12 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+.btn.btn-danger {
+  background-color: #0f2b01;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  color: #eeeeee;
 }

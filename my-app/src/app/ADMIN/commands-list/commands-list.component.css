@@ -41,3 +41,22 @@
     padding: 8px;
     border-top: 1px solid #ccc;
 }
+
+button {
+    font-family: sans-serif;
+    background-color: green;
+    display: block;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
