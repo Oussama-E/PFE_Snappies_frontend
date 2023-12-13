@@ -71,12 +71,27 @@ onSubmit() {
 
     this.http.post('http://localhost:8000/articles/create_article', newArticle, { headers }).subscribe(
       response => {
-        this.toastr.success('Article créé avec succès');
+        this.toastr.success('Article créé avec succès', 'Succès', {
+          positionClass: 'md-toast-top-full-width',
+          progressBar: true,
+          closeButton: true,
+          timeOut: 2000,
+          extendedTimeOut: 1000,
+          easeTime: 500,
+
+        });
         this.fetchArticles(); // Rechargez la liste des articles après la création
         this.state = 'visible'; // Ajoutez cette ligne
       },
       error => {
-        this.toastr.error('Erreur lors de la création de l article');
+        this.toastr.error("Erreur lors de la création de l' article", 'Erreur', {
+          positionClass: 'md-toast-top-full-width',
+          progressBar: true,
+          closeButton: true,
+          timeOut: 2000,
+          extendedTimeOut: 1000,
+          easeTime: 500,
+        });
       }
     );
 
@@ -121,7 +136,7 @@ confirmAdd() {
   }
 
   confirmDelete(article: any) {
-    let result = confirm("Êtes-vous sûr de vouloir supprimer " + article.nom + " ?");
+    let result = confirm("Êtes-vous sûr de vouloir supprimer " + article.nom + " de votre inventaire ?");
     if (result) {
       this.deleteArticle(article.article);
     }

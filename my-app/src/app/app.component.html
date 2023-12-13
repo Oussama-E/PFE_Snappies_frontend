@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Snappies Livreur</title>
     <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
       rel="icon"
       type="image/x-icon"
@@ -23,16 +23,15 @@
     <div class="toolbar" role="banner">
       <button mat-button [matMenuTriggerFor]="menuAdmin" *ngIf="isConnected">Menu</button>
     <mat-menu #menuAdmin="matMenu">
-      
-      <button mat-menu-item routerLink="/tournees">  <!-- *ngIf="isAdmin" -->
+      <button mat-menu-item routerLink="/tournees">  
         <mat-icon>map</mat-icon>
         <span>Voir les tournées</span>
       </button>
-      <button mat-menu-item routerLink="/livreurs">  <!-- *ngIf="isAdmin" -->
+      <button mat-menu-item routerLink="/livreurs">  
         <mat-icon>people</mat-icon>
         <span>Vos livreurs</span>
       </button>
-      <button mat-menu-item routerLink="/commandes"> <!-- *ngIf="isAdmin" -->
+      <button mat-menu-item routerLink="/commandes"> 
         <mat-icon>shopping_cart</mat-icon>
         <span>Vos commandes</span>
       </button>
@@ -63,7 +62,7 @@
         />
       </a>
       
-      <p>SNAPPIES LIVREUR</p>
+      <p id="snappiestitle">SNAPPIES LIVREUR</p>
     </div>
 
 

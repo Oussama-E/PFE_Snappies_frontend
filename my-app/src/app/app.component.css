@@ -25,11 +25,24 @@ p {
   flex: 1;
 }
 
+#snappiestitle{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 25px;
+  letter-spacing: -2.8px;
+  word-spacing: 6px;
+  color: #ffffff;
+  font-weight: 400;
+  text-decoration: overline rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+}
+
 .toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #1976d2;
+  background-color: #000000;
   color: white;
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
@@ -291,4 +304,17 @@ svg#clouds {
     display: none;
     visibility: hidden;
   }
+}
+
+button, span {
+  font-family: Georgia, serif;
+font-size: 20px;
+letter-spacing: 0.4px;
+word-spacing: 1.4px;
+color: #404040;
+font-weight: 400;
+text-decoration: rgb(68, 68, 68);
+font-style: normal;
+font-variant: normal;
+text-transform: none;
 }

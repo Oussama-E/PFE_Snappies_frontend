@@ -4,7 +4,44 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '@fortawesome/fontawesome-free/css/all.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    color: #404040;
+    font-weight: 400;
+    text-decoration: rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 
+@media screen and (max-width: 480px) {
+    .form-container {
+      width: 90%; /* Réduisez la largeur du conteneur */
+      margin: 0 auto; /* Centrez le conteneur */
+    }
+  
+    h2 {
+      font-size: 1.2em; /* Diminuez la taille du titre */
+    }
+
+    .btn {
+        width: 100%; /* Augmentez la largeur des boutons */
+        margin-bottom: 10px; /* Ajoutez un espace entre les boutons */
+      }
+
+      .toast-success {
+        background-color: #b3e5fc;
+      }
+    }

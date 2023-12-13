@@ -1,5 +1,8 @@
 // tournee.component.ts
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { TokenService } from 'src/app/services/token.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LivreurService } from 'src/app/services/livreurService/livreur.service';
 import { TourneeService } from 'src/app/services/tourneeService/tournee.service';
@@ -18,7 +21,7 @@ export class TourneeComponent implements OnInit {
   userIsAdmin: boolean = true; 
 
 
-  constructor( private tourneeService: TourneeService ,private livreurService: LivreurService , private routerService : Router) { }
+  constructor( private tourneeService: TourneeService ,private livreurService: LivreurService, private routerService : Router, private http: HttpClient, private toastr: ToastrService, private tokenService : TokenService) { }
 
   ngOnInit(): void {
     this.loadLivreurs();
@@ -113,6 +116,29 @@ export class TourneeComponent implements OnInit {
           console.error('Erreur lors de l\'assignation de la tournée', error);
         }
       );
+    }
+  }
+
+ 
+
+  confirmDelete(tournee: any) {
+    let result = confirm("Êtes-vous sûr de vouloir supprimer " + tournee.nom + " ?");
+    if (result) {
+      this.deleteTourneeById(tournee.id);
+    }
+  }
+
+  confirmAssign(id: number){
+    let result = confirm("Êtes-vous sûr de vouloir assigner la tournée à ce livreur ?");
+    if (result) {
+      this.assignerTournee(id);
+    }
+  }
+
+  confirmRestore(){
+    let result = confirm("Êtes-vous sûr de vouloir restaurer l'état de toutes les livraisons ?");
+    if (result) {
+      this.restaurerLivraisons();
     }
   }
   

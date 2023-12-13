@@ -72,4 +72,11 @@ export class ClientsComponent implements OnInit {
       }
     );
   }
+
+  confirmDelete(client: any) {
+    let result = confirm("Êtes-vous sûr de vouloir supprimer " + client.client_nom + " de votre liste de clients ?");
+    if (result) {
+      this.deleteClient(client.id);
+    }
+  }
 }

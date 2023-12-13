@@ -44,7 +44,7 @@ import { CreateClientPageComponent } from './ADMIN/create-client-page/create-cli
     AllLivreursComponent,
     CreateLivreurComponent,
     ClientsComponent,
-    CreateClientPageComponent,
+    CreateClientPageComponent
     
   ],
   imports: [

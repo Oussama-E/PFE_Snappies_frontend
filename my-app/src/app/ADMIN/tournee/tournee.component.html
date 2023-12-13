@@ -1,103 +1,142 @@
 <div>
-  <button
-    id="createtourne"
-    *ngIf="userIsAdmin"
-    [routerLink]="['/tournee/creation']"
-  >
-    Créer une nouvelle tournée
-  </button>
-  <br>
-  <button
-    id="createtourne"
-    *ngIf="userIsAdmin"
-    (click)="restaurerLivraisons()"
-    async
-  >
-    restaurer les livraison des tournees
-  </button>
-  <hr />
-  <h2>Voici la liste des tournées</h2>
+  <div>
+    <section>
+    <button
+      [routerLink]="['/tournee/creation']"
+    >
+      <i class="fas fa-plus"></i> Nouvelle tournée
+    </button>
+    <br />
+    <button
+      id="createtourne"
+      *ngIf="userIsAdmin"
+      (click)="confirmRestore()"
+      
+    >
+    <i class="fa-solid fa-arrows-rotate"></i>
+      Restaurer les états 
+    </button>
+  
+  </section>
+    <hr />
+    <h2>Vos tournées se trouvent ici</h2>
 
-  <!-- Bouton pour créer une nouvelle tournée (visible seulement pour les admins) -->
+    <ul>
+      <li *ngFor="let tournee of tourneesData">
+        <div>
+          <!-- Informations sur la tournée -->
+          <section>
+            <strong>{{ tournee.nom }}</strong>
+            <section>Assigné à {{ tournee.livreur }}</section>
+          </section>
 
-  <ul>
-    <li *ngFor="let tournee of tourneesData">
-      <div>
-        <!-- Informations sur la tournée -->
-        {{ tournee.nom }} - Livreur: {{ tournee.livreur }}
+          <select
+            *ngIf="userIsAdmin"
+            [(ngModel)]="selectedLivreurId[tournee.id]"
+          >
+            <option *ngFor="let livreur of livreurs" [value]="livreur.id_user">
+              {{ livreur.username }}
+            </option>
+          </select>
 
-        <!-- Liste déroulante des livreurs (visible seulement pour les admins) -->
-        <select *ngIf="userIsAdmin" [(ngModel)]="selectedLivreurId[tournee.id]">
-          <option *ngFor="let livreur of livreurs" [value]="livreur.id_user">
-            {{ livreur.username }}
-          </option>
-        </select>
-
-        <!-- Bouton pour assigner la tournée (visible seulement pour les admins) -->
-        <button *ngIf="userIsAdmin" (click)="assignerTournee(tournee.id)">Assigner la tournée</button>
-
-        <button *ngIf="userIsAdmin" (click)="deleteTourneeById(tournee.id)" >Supprimer la tournée</button>
-
-        <!-- Bouton pour afficher les commandes -->
-        <button (click)="toggleDetails(tournee)">Afficher les commandes</button>
-
-        <!-- Flèche indiquant l'état des détails -->
-        <span
-          [ngClass]="{
-            'arrow-up': tournee.showDetails,
-            'arrow-down': !tournee.showDetails
-          }"
-        ></span>
-      </div>
-      <div *ngIf="tournee.showDetails">
-        <!-- Détails de la tournée -->
-        <section
-          *ngIf="
-            commandesData[tournee.id] && commandesData[tournee.id].length > 0
-          "
-        >
-          <h4>Commandes de la tournée</h4>
-          <ul>
-            <li *ngFor="let commande of commandesData[tournee.id]">
-              <!-- Informations sur le client et son adresse -->
-              <strong
-                >Nom du client : {{ commande.client }} - Adresse :
-                {{ commande.client_adresse }}</strong
-              >
+          <section>
+            <button
+              *ngIf="userIsAdmin"
               
-              <h5>Details de la commande de {{ commande.client }} :</h5>
-              <ul>
-                <li *ngFor="let article of commande.articles">
-                  <div>
-                    <!-- Détails de l'article -->
-                    <p>Nom de l'article:</p>
-                    <strong>{{ article.nom_article }}</strong>
-                  </div>
+              class="btn btn-success"
+              style="border-radius: 100rem;"
+              (click)="confirmAssign(tournee.id)"
+            >
+            <i class="fas fa-truck"></i>
+            </button>
 
-                  <div *ngIf="article.quantite_caisse !== 0">
-                    <div>
-                      <strong>Nombre de caisses :</strong>
-                      {{ article.quantite_caisse }} de ({{article.nombre_articles}})
-                    </div>
-                  </div>
-                  
-                  <div *ngIf="article.quantite_unite !== 0">
-                    <div>
-                      <strong>Quantité par unité:</strong>
-                      {{ article.quantite_unite }}
-                    </div>
-                  </div>
+            <button
+              type="button"
+              class="btn btn-danger"
+              style="border-radius:100rem;"
+              (click)="confirmDelete(tournee)"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
 
-                </li>
-              </ul>
-              <div [ngStyle]="{'color': commande.est_livre ? 'green' : 'orange'}">
-           <strong>État de livraison :</strong>
-            <strong>{{ commande.est_livre ? 'Livrée' : 'Non livrée' }} </strong>
-          </div>
-            </li>
-          </ul>
-        </section>
-      </div>
-    </li>
-  </ul>
+            <!-- Bouton pour afficher les commandes -->
+            <button
+              (click)="toggleDetails(tournee)"
+              class="btn btn-success"
+              style="
+                background-color: blue;
+                color: white;
+                border-radius:100rem;
+              "
+            >
+            <i class="fas fa-eye"></i>
+            </button>
+          </section>
+
+          <!-- Flèche indiquant l'état des détails -->
+          <!-- <span
+    [ngClass]="{
+      'arrow-up': tournee.showDetails,
+      'arrow-down': !tournee.showDetails
+    }"
+  ></span> -->
+        </div>
+        <div *ngIf="tournee.showDetails">
+          <!-- Détails de la tournée -->
+          <section
+            *ngIf="
+              commandesData[tournee.id] && commandesData[tournee.id].length > 0
+            "
+          >
+            <h4>Commandes de la tournée</h4>
+            <ul>
+              <li *ngFor="let commande of commandesData[tournee.id]">
+                <!-- Informations sur le client et son adresse -->
+                <strong
+                  >Client : {{ commande.client }},
+                  {{ commande.client_adresse }}</strong
+                >
+
+                <h5>Details de la commande de {{ commande.client }} :</h5>
+                <ul>
+                  <li *ngFor="let article of commande.articles">
+                    <div>
+                      <!-- Détails de l'article -->
+                      Article: {{ article.nom_article }}
+                    </div>
+
+                    <div *ngIf="article.quantite_caisse !== 0">
+                      <div>
+                        Nombre de caisses :
+                        <strong
+                          >{{ article.quantite_caisse }} de ({{
+                            article.nombre_articles
+                          }})</strong
+                        >
+                      </div>
+                    </div>
+
+                    <div *ngIf="article.quantite_unite !== 0">
+                      <div>
+                        Quantité par unité:
+                        <strong>{{ article.quantite_unite }}</strong>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div
+                  [ngStyle]="{ color: commande.est_livre ? 'green' : 'orange' }"
+                >
+                  <strong>État de livraison :</strong>
+                  <strong
+                    >{{ commande.est_livre ? "Livrée" : "Non livrée" }}
+                  </strong>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
