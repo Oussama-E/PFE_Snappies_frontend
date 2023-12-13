@@ -1,29 +1,39 @@
 <!-- clients.component.html -->
-<div>
-    <h1>Clients avec aucune commande : </h1>
-    <div *ngFor="let client of clients">
-        <p>
-            {{ client.client_nom }} - {{ client.telephone }} - {{ client.adresse }}
-        </p>
+<div class="container mt-3">
+    <h1 class="text-center">Clients avec aucune commande :</h1>
+    <div *ngFor="let client of clients" class="row mt-3">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>{{ client.client_nom }}</strong> - {{ client.telephone }} - {{ client.adresse }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <!-- Bouton pour afficher/masquer le formulaire -->
+            <button (click)="updateClient(client.id)" class="btn btn-primary me-2"><i class="fa fa-edit"></i> Modifier</button>
 
-        <!-- Bouton pour afficher/masquer le formulaire -->
-        <button (click)="updateClient(client.id)">Modifier</button>
+            <!-- Formulaire de mise à jour conditionnel -->
+            <form *ngIf="isUpdateFormOpen[client.id]" (submit)="updateClient(client.id)" class="me-2">
+                <div class="form-group">
+                    <label>Nom:</label>
+                    <input [(ngModel)]="clientToUpdate.name" name="name" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Téléphone:</label>
+                    <input [(ngModel)]="clientToUpdate.numero_telephone" name="numero_telephone" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Adresse:</label>
+                    <input [(ngModel)]="clientToUpdate.adresse" name="adresse" required class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Mettre à jour</button>
+            </form>
 
-        <!-- Formulaire de mise à jour conditionnel -->
-        <form *ngIf="isUpdateFormOpen[client.id]" (submit)="updateClient(client.id)">
-            <label>Nom:</label>
-            <input [(ngModel)]="clientToUpdate.name" name="name" required>
-
-            <label>Téléphone:</label>
-            <input [(ngModel)]="clientToUpdate.numero_telephone" name="numero_telephone" required>
-
-            <label>Adresse:</label>
-            <input [(ngModel)]="clientToUpdate.adresse" name="adresse" required>
-
-            <button type="submit">Mettre à jour</button>
-        </form>
-
-        <button (click)="deleteClient(client.id)">Supprimer</button>
+            <button (click)="confirmDelete(client)" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</button>
+        </div>
     </div>
-    <button *ngIf="userIsAdmin" [routerLink]="['/client/create']">Créer un client</button>
+    <button *ngIf="userIsAdmin" [routerLink]="['/client/create']" class="btn btn-secondary mt-3"><i class="fa fa-plus"></i> Créer </button>
 </div>

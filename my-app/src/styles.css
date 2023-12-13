@@ -24,3 +24,24 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+
+@media screen and (max-width: 480px) {
+    .form-container {
+      width: 90%; /* Réduisez la largeur du conteneur */
+      margin: 0 auto; /* Centrez le conteneur */
+    }
+  
+    h2 {
+      font-size: 1.2em; /* Diminuez la taille du titre */
+    }
+
+    .btn {
+        width: 100%; /* Augmentez la largeur des boutons */
+        margin-bottom: 10px; /* Ajoutez un espace entre les boutons */
+      }
+
+      .toast-success {
+        background-color: #b3e5fc;
+      }
+    }

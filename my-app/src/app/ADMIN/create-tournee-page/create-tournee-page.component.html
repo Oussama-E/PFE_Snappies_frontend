@@ -1,12 +1,10 @@
-<!-- tournee-creation.component.html -->
-
 <div class="form-container">
-    <h2><strong>Compléter le champs ci-dessous</strong></h2>
-    <form (ngSubmit)="creerTournee()">
-      <div class="form-group">
-        <label for="nomTournee">Nom de la tournée:</label>
-        <input placeholder="Entrez un nom" class="createTourneeFormInput" type="text" id="nomTournee" [(ngModel)]="nomTournee" name="nomTournee" required>
-      </div>
-      <button class="btn btn-success" type="submit">Créer</button>
-    </form>
-  </div>
+  <h2><strong>Compléter le champs ci-dessous</strong></h2>
+  <form (ngSubmit)="creerTournee()">
+    <div class="form-group">
+      <label for="nomTournee">Nom de la tournée:</label>
+      <input placeholder="Entrez un nom" class="createTourneeFormInput" type="text" id="nomTournee" [(ngModel)]="nomTournee" name="nomTournee" required>
+    </div>
+    <button class="btn btn-success" type="submit">Créer</button>
+  </form>
+</div>

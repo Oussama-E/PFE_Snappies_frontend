@@ -1,12 +1,12 @@
 <div class="container">
-    <h2>Vos livreurs</h2>
-    <ul class="livreurs">
-      <li *ngFor="let livreur of livreurs">
-        <div class="livreur">
-          <h3>{{ livreur.username }}</h3>
-            
-        </div>
-      </li>
-    </ul>
-    <button [routerLink]="['/livreur/create']"><i class="fas fa-plus"></i></button>
-  </div>
+  <h2>Vos livreurs</h2>
+  <ul class="livreurs">
+    <li *ngFor="let livreur of livreurs">
+      <div class="livreur">
+        <h3>{{ livreur.username }}</h3>
+          
+      </div>
+    </li>
+  </ul>
+  <button [routerLink]="['/livreur/create']"><i class="fas fa-plus"></i></button>
+</div>

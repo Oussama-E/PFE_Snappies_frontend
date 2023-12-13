@@ -1,6 +1,7 @@
 .container {
     max-width: 800px;
-    margin: 20px auto;
+    width: 90%;
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -9,6 +10,7 @@
   }
   
   .container h2 {
+    font-size: 1.2em;
     color: #333;
     margin-bottom: 20px;
   }
@@ -39,13 +41,13 @@
   }
   
   .livreur {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 15px;
-    margin-bottom: 20px;
-    transition: box-shadow 0.3s;
+    display: flex; /* Utilisez le display flex pour aligner les éléments */
+    align-items: center; /* Centrez les éléments verticalement */
+    justify-content: space-between; /* Répartissez les éléments horizontalement */
+    margin-bottom: 10px; /* Ajoutez un espace entre les éléments */
   }
+
+ 
   
   .livreur:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -54,8 +56,10 @@
   .livreur h3 {
     color: #333;
     margin: 0;
-    font-size: 18px;
+    font-size: 1em;
   }
   
-  /* Ajoutez des styles supplémentaires selon vos préférences */
-  
+   .btn {
+    width: 100%; /* Augmentez la largeur des boutons */
+    margin-bottom: 10px; /* Ajoutez un espace entre les boutons */
+  }

@@ -1,233 +1,69 @@
-.content {
-  display: flex;
-  margin: 82px auto 32px;
-  padding: 0 16px;
-  max-width: 960px;
-  flex-direction: column;
-  align-items: center;
+/* Ajoutez des règles CSS pour les écrans mobiles */
+@media screen and (max-width: 480px) {
+  /* Définir une police de caractères et une couleur de fond pour le corps du document */
+body {
+  font-family: Arial, sans-serif;
 }
 
-h2{
-  text-align: center;
-}
-
-svg.material-icons {
-  height: 24px;
-  width: auto;
-}
-
-svg.material-icons:not(:last-child) {
-  margin-right: 8px;
-}
-
-.card svg.material-icons path {
-  fill: #888;
-}
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 16px;
-}
-
-.card {
-  all: unset;
-  border-radius: 4px;
-  border: 1px solid #eee;
-  background-color: #fafafa;
-  height: 40px;
-  width: 100%;
-  margin: 0 8px 16px;
-  padding: 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease-in-out;
-  line-height: 24px;
-}
-
-.card-container .card:not(:last-child) {
-  margin-right: 0;
-}
-
-.card.card-small {
-  height: 16px;
-  width: 168px;
-}
-
-.card-container .card:not(.highlight-card) {
-  cursor: pointer;
-}
-
-.card-container .card:not(.highlight-card):hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-}
-
-.card-container .card:not(.highlight-card):hover .material-icons path {
-  fill: rgb(105, 103, 103);
-}
-
-.card.highlight-card {
-  background-color: #e3f2fd;
-  color: black;
-  font-weight: 600;
-  border: none;
-  width: auto;
-  min-width: 30%;
-  position: relative;
-}
-
-.card.card.highlight-card span {
-  margin-left: 60px;
-}
-
-svg#rocket {
-  width: 80px;
-  position: absolute;
-  left: -10px;
-  top: -24px;
-}
-
-svg#rocket-smoke {
-  height: calc(100vh - 95px);
-  position: absolute;
-  top: 10px;
-  right: 180px;
-  z-index: -10;
-}
-
-a,
-a:visited,
-a:hover {
-  color: #1976d2;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #125699;
-}
-
-.termin {
-  width: 100%;
-  height: 1px;
-  background-color: #eee;
-  margin: 10px 0;
-}
-
+/* Centrer le conteneur du formulaire et lui donner une largeur maximale */
 .form-container {
-  width: 80%;
   margin: 0 auto;
-  background-color: #f0f0f0;
+  max-width: 600px;
+}
+
+/* Ajouter des marges et des bordures au formulaire */
+form {
+  margin: 20px;
   padding: 20px;
-  border-radius: 10px;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-control {
-  display: block;
-  width: 100%;
-  height: 40px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 16px;
+}
+
+/* Aligner les labels et les inputs du formulaire */
+.form-group {
+  display: flex;
+  align-items: center;
 }
 
 label {
-  display: block;
-  font-weight: bold;
-  color: #333;
-}
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'><path fill='%23333' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z'/></svg>") no-repeat right 10px center;
-  background-size: 15px;
-}
-
-option {
-  padding: 10px;
-}
-
-.btn.btn-success {
-  display: block;
-  width: 100%;
-  height: 50px;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn-success {
-  background-color: #28a745;
-}
-
-.fas {
+  flex: 1;
   margin-right: 10px;
 }
 
+input, select {
+  flex: 2;
+}
 
+/* Ajouter du style aux boutons du formulaire */
+button {
+  margin: 10px;
+}
+
+/* Ajouter du style au titre du formulaire */
+h2 {
+  text-align: center;
+}
+
+/* Ajouter du style au titre de l'inventaire */
+.card {
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Ajouter des couleurs différentes selon le type de vente */
 .unit {
-  color: #ea6b6b;
+  color: green;
 }
 
 .case {
-  color: rgb(104, 104, 234);
+  color: blue;
 }
-
-.sep {
-  border-bottom: 2px solid #ccc;
-}
-
-/* Définir la largeur maximale des tuiles */
-.card.highlight-card.card-small {
-  max-width: 300px;
-}
-
-/* Centrer le texte et le bouton dans les tuiles */
-.grid-tile-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 200px; /* Ajouté */
-}
-
-/* Positionner le bouton supprimer en haut à droite */
-.card-body {
-  position: relative; /* ajouté */
-}
-
-.btn.btn-danger {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  margin-left: 10px; 
-  border: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  outline: none;
-  color: #eeeeee;
-  font-weight: 600;
-  font-size: 15px;
-  background-color: #0f2b01;
-  padding: 15px 50px;
-}
-
-/* Ajuster la taille des tuiles en fonction de la largeur de l'écran */
-@media (max-width: 600px) {
-  .card.highlight-card.card-small {
-    max-width: 200px;
-  }
-}
+ }

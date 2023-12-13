@@ -35,10 +35,7 @@ button{
   }
 
 .createTourneeFormInput {
-    padding: 10px;
-    border-radius: 10px;
-    padding-right: 200px;
-    margin-right: 10px;
+  font-size: 1em; /* Diminuez la taille du texte */
 }
 
 .createTourneeFormSubmitButton {
