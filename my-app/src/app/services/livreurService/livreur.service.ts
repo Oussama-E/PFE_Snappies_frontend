@@ -14,7 +14,7 @@ export class LivreurService {
 
 
 
-
+//https://pfe-backend-souli-dev.azurewebsites.net/
 
   getAllLivreurs(): Observable<any> {
     const token = this.tokenService.getToken();
