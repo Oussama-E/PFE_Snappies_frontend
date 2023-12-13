@@ -22,7 +22,12 @@
                 <div ngbAccordionBody>
                     <ng-template>
                         <div *ngFor="let article of command.articles" class="article-container">
-                            <p>{{ article.nom_article }}</p>
+                            <div *ngIf="article.taille_article !== null">
+                                <p>{{ article.nom_article }} taille : {{ article.taille_article }}</p>
+                            </div>
+                            <div *ngIf="article.taille_article == null">
+                                <p>{{ article.nom_article }}</p>
+                            </div>
                             <div *ngIf="mapIsBeingModified.get(command.id_commande) == false;">
                                 <p *ngIf="article.quantite_caisse != 0">{{ article.quantite_caisse }} caisses</p>
                                 <p *ngIf="article.quantite_unite != 0">{{ article.quantite_unite }} unites</p>
@@ -40,11 +45,15 @@
                             </div>
                         </div>
                         <div *ngIf="mapIsBeingModified.get(command.id_commande) == true;">
-                            <div *ngFor="let select of nbSelects; let i = index">
+                            <div *ngFor="let select of nbSelects; let i = index" class="divAjoutArticle">
                                 <select required id="articleSelect{{i}}">
-                                    <option *ngFor="let article of articles" value="{{ article | json }}">{{ article.nom }} ({{ article.type }})</option>
+                                    <option *ngFor="let article of articles" value="{{ article | json }}">{{ article.nom }} ({{ article.type }})
+                                        <span *ngIf="article.taille !== null">taille : {{ article.taille }}</span>
+                                    </option>
                                 </select>
-                                <input required type="number" class="numberInput" id="nbArticlesAdd{{i}}" name="nbArticles"/>
+                                <div>
+                                    Quantité : <input required type="number" class="numberInput" id="nbArticlesAdd{{i}}" name="nbArticles"/>
+                                </div>
                             </div>
                             <button (click)="ajouter1SelectArticle()">ajouter un article</button>
                             <button *ngIf="nbSelects.length > 0" (click)="enlever1SelectArticle()">retirer un article</button>
