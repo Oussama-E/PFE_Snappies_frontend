@@ -1,5 +1,5 @@
 <div class="commandListContainer">
-    <a routerLink="/nouvelleCommande">Créer une commande</a>
+    <button btn btn-success routerLink="/nouvelleCommande">Créer une commande</button>
     <h1 class="title">Commands</h1>
     <div class="tourneeContainer">
         <p>Tournée:</p>
@@ -47,7 +47,15 @@
                                 <input required type="number" class="numberInput" id="nbArticlesAdd{{i}}" name="nbArticles"/>
                             </div>
                             <button (click)="ajouter1SelectArticle()">ajouter un article</button>
-                            <button (click)="enlever1SelectArticle()">retirer un article</button>
+                            <button *ngIf="nbSelects.length > 0" (click)="enlever1SelectArticle()">retirer un article</button>
+                        </div>
+                        <div *ngIf="mapIsBeingModified.get(command.id_commande) == true;">
+                            <div *ngIf="command.est_livre">
+                                <p>La commande est déjà livrée, le changement sera donc permanent</p>
+                            </div>
+                            <div *ngIf="!command.est_livre">
+                                Rendre le changement permnanent <input type="checkbox" id="isPermanent">
+                            </div>
                         </div>
                     </ng-template>
                 </div>
