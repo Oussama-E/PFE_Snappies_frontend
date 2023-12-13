@@ -24,6 +24,8 @@ import { CreateTourneePageComponent } from './ADMIN/create-tournee-page/create-t
 import { CommonModule } from '@angular/common';
 import { AllLivreursComponent } from './ADMIN/all-livreurs/all-livreurs.component';
 import { CreateLivreurComponent } from './ADMIN/create-livreur/create-livreur.component';
+import { ClientsComponent } from './ADMIN/clients/clients.component';
+import { CreateClientPageComponent } from './ADMIN/create-client-page/create-client-page.component';
 
 
 
@@ -41,6 +43,8 @@ import { CreateLivreurComponent } from './ADMIN/create-livreur/create-livreur.co
     CreateTourneePageComponent,
     AllLivreursComponent,
     CreateLivreurComponent,
+    ClientsComponent,
+    CreateClientPageComponent,
     
   ],
   imports: [

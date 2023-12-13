@@ -55,6 +55,22 @@ export class TourneeService {
     return this.http.post<any>(`${this.apiUrl}/creer_tournee`, body, { headers });
   }
 
+  update_all_EstLivre(): Observable<any> {
+    const token = this.tokenService.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    });
+
+    const url = `http://localhost:8000/commande/update_est_livre`;
+
+    return this.http.patch<any>(url, {}, { headers });
+  }
+
+
+
+
+
 
   
 }

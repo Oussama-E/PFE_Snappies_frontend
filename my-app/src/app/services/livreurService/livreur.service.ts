@@ -49,11 +49,14 @@ export class LivreurService {
     return this.http.post<any>(`http://localhost:8000/login/create_livreur`, livreurData, { headers });
   }
   marquerCommeLivre(idCommande: number): Observable<any> {
+    const token = this.tokenService.getToken();
+    console.log(token);
+    const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
+
     const url = `${this.apiUrl}/update_livraison/${idCommande}`;
 
-    // Utilisez HttpClient pour envoyer une requête PUT à votre API
-    return this.http.patch<any>(url, {});
+    return this.http.patch<any>(url, {} , {headers});
   }
-
+ 
 
 }

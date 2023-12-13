@@ -38,7 +38,7 @@ export class LivreurPageComponent implements OnInit {
         this.est_livre=true;
 
         console.log(response.message); 
-        
+
       },
       (error) => {
         console.error('Erreur lors de la mise à jour de la commande : ', error);

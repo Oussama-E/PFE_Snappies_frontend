@@ -82,6 +82,18 @@ export class TourneeComponent implements OnInit {
     );
   }
 
+  restaurerLivraisons(): void {
+    this.tourneeService.update_all_EstLivre().subscribe(
+      (response) => {
+        console.log('Réponse de l\'API:', response);
+        console.log("les commandes ont ete restaure ");
+      },
+      (error) => {
+        console.error('Erreur lors de la restauration des livraisons : ', error);
+      }
+    );
+  }
+
   assignerTournee(tourneeId: number): void {
     const livreurId = this.selectedLivreurId[tourneeId];
     console.log(livreurId);

@@ -1,12 +1,9 @@
-/* Style global pour la page */
+/* General Styles */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+  background-color: #f5f5f5;
 }
 
-/* Conteneur principal */
 div {
   max-width: 800px;
   margin: 20px auto;
@@ -15,26 +12,10 @@ div {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre des tournées */
 h2 {
   color: #333;
 }
 
-<<<<<<< HEAD
-/* Bouton de création de tournée */
-button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-/* Liste des tournées */
-ul {
-  list-style: none;
-  padding: 0;
-=======
 /* Tour Item Styles */
 li {
   border: 1px solid #ddd;
@@ -83,63 +64,29 @@ button {
 
 select, button {
   margin-left: 10px;
->>>>>>> 77fcce9b184daa4d642e1a03f29219368529b053
 }
 
-/* Élément de la liste des tournées */
-li {
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
-}
-
-/* Détails de la tournée */
-div > div {
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-}
-
-/* Flèche pour les détails */
+/* Toggle Arrow Styles */
 span {
   display: inline-block;
   width: 0;
   height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  border-color: #333 transparent transparent transparent;
+  margin-left: 5px;
 }
 
-/* Flèche vers le bas par défaut */
-.arrow-down {
-  border-top: 5px solid #333;
+/* Details Section Styles */
+li > div:last-child {
+  margin-top: 10px;
 }
 
-/* Flèche vers le haut lorsque les détails sont affichés */
-.arrow-up {
-  border-bottom: 5px solid #333;
-}
-
-/* Style pour les informations sur le client et l'article */
-strong {
-  color: #4CAF50;
-}
-
-/* Style pour les détails de la commande */
-h5 {
+h4 {
   color: #333;
 }
 
-/* Style pour la liste des articles */
-ul ul {
-  list-style: none;
-  padding: 0;
-}
-
-/* Style pour chaque article */
-li li {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
+/* Article Details Styles */
+li > div:last-child ul li div {
+  margin-top: 5px;
 }
