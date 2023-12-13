@@ -45,7 +45,6 @@ export class LoginFormComponent {
             this.checkUserRole(data.role);
 
             console.log(data.username);
-            this.router.navigate(['tournees'])
           },
           (error) => {
             console.error('Erreur lors de la soumission du formulaire : ', error);
@@ -63,7 +62,8 @@ export class LoginFormComponent {
       this.isAdmin = false;
       console.log('Connecté en tant que livreur.');
     } else if (role === 'admin') {
-   
+      this.router.navigate(['tournees']);
+
       this.tokenService.isAdmin$.subscribe(newValue => {
         this.isAdmin = true;
       });
