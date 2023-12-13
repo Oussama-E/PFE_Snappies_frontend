@@ -6,6 +6,14 @@
   >
     Créer une nouvelle tournée
   </button>
+  <br>
+  <button
+    id="createtourne"
+    *ngIf="userIsAdmin"
+    (click)="restaurerLivraisons()"
+  >
+    restaurer les livraison des tournees
+  </button>
   <hr />
   <h2>Voici la liste des tournées</h2>
 
@@ -25,9 +33,9 @@
         </select>
 
         <!-- Bouton pour assigner la tournée (visible seulement pour les admins) -->
-        <button *ngIf="userIsAdmin" (click)="assignerTournee(tournee.id)">
-          Assigner
-        </button>
+        <button *ngIf="userIsAdmin" (click)="assignerTournee(tournee.id)">Assigner la tournée</button>
+
+        <button *ngIf="userIsAdmin" (click)="deleteTourneeById(tournee.id)" >Supprimer la tournée</button>
 
         <!-- Bouton pour afficher les commandes -->
         <button (click)="toggleDetails(tournee)">Afficher les commandes</button>
@@ -55,7 +63,7 @@
                 >Nom du client : {{ commande.client }} - Adresse :
                 {{ commande.client_adresse }}</strong
               >
-
+              
               <h5>Details de la commande de {{ commande.client }} :</h5>
               <ul>
                 <li *ngFor="let article of commande.articles">
@@ -64,16 +72,27 @@
                     <p>Nom de l'article:</p>
                     <strong>{{ article.nom_article }}</strong>
                   </div>
-                  <div>
-                    <strong>Nombre d'articles:</strong>
-                    {{ article.nombre_articles }}
+
+                  <div *ngIf="article.quantite_caisse !== 0">
+                    <div>
+                      <strong>Nombre de caisses :</strong>
+                      {{ article.quantite_caisse }} de ({{article.nombre_articles}})
+                    </div>
                   </div>
-                  <div>
-                    <strong>Quantité par unité:</strong>
-                    {{ article.quantite_unite }}
+                  
+                  <div *ngIf="article.quantite_unite !== 0">
+                    <div>
+                      <strong>Quantité par unité:</strong>
+                      {{ article.quantite_unite }}
+                    </div>
                   </div>
+                  
                 </li>
               </ul>
+              <div>
+                <strong>État de livraison :</strong>
+                {{ commande.est_livre ? 'Livrée' : 'Non livrée' }}
+              </div>
             </li>
           </ul>
         </section>

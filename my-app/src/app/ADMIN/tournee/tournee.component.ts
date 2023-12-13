@@ -43,6 +43,23 @@ export class TourneeComponent implements OnInit {
     }
   }
 
+  deleteTourneeFromList(tourneeId: number): void {
+    this.tourneesData = this.tourneesData.filter(tournee => tournee.id !== tourneeId);
+  }
+
+  deleteTourneeById(tourneeId: number): void {
+  this.tourneeService.deleteTournee(tourneeId).subscribe(
+    response => {
+      console.log(response);
+      this.deleteTourneeFromList(tourneeId); // Supprimer la tournée de la liste
+    },
+    error => {
+      console.error(error);
+    }
+  );
+}
+
+
   loadCommandes(tourneeId: number): void {
     this.tourneeService.getCommandesFromTournee(tourneeId).subscribe(
       (commandesData: any) => {
@@ -61,6 +78,18 @@ export class TourneeComponent implements OnInit {
       },
       (error) => {
         console.error('Une erreur s\'est produite lors de la récupération des livreurs', error);
+      }
+    );
+  }
+
+  restaurerLivraisons(): void {
+    this.tourneeService.update_all_EstLivre().subscribe(
+      (response) => {
+        console.log('Réponse de l\'API:', response);
+        console.log("les commandes ont ete restaure ");
+      },
+      (error) => {
+        console.error('Erreur lors de la restauration des livraisons : ', error);
       }
     );
   }
