@@ -43,6 +43,23 @@ export class TourneeComponent implements OnInit {
     }
   }
 
+  deleteTourneeFromList(tourneeId: number): void {
+    this.tourneesData = this.tourneesData.filter(tournee => tournee.id !== tourneeId);
+  }
+
+  deleteTourneeById(tourneeId: number): void {
+  this.tourneeService.deleteTournee(tourneeId).subscribe(
+    response => {
+      console.log(response);
+      this.deleteTourneeFromList(tourneeId); // Supprimer la tournée de la liste
+    },
+    error => {
+      console.error(error);
+    }
+  );
+}
+
+
   loadCommandes(tourneeId: number): void {
     this.tourneeService.getCommandesFromTournee(tourneeId).subscribe(
       (commandesData: any) => {

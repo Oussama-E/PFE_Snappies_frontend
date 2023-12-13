@@ -1,9 +1,12 @@
-/* General Styles */
+/* Style global pour la page */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
 }
 
+/* Conteneur principal */
 div {
   max-width: 800px;
   margin: 20px auto;
@@ -12,58 +15,80 @@ div {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Titre des tournées */
 h2 {
   color: #333;
 }
 
-/* Tour Item Styles */
-li {
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #f9f9f9;
-}
-
-li > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+/* Bouton de création de tournée */
 button {
+  padding: 10px;
   background-color: #4CAF50;
-  color: white;
-  padding: 8px 12px;
+  color: #fff;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 
-select, button {
-  margin-left: 10px;
+/* Liste des tournées */
+ul {
+  list-style: none;
+  padding: 0;
 }
 
-/* Toggle Arrow Styles */
+/* Élément de la liste des tournées */
+li {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+/* Détails de la tournée */
+div > div {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+/* Flèche pour les détails */
 span {
   display: inline-block;
   width: 0;
   height: 0;
-  border-style: solid;
-  border-width: 5px 5px 0;
-  border-color: #333 transparent transparent transparent;
-  margin-left: 5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
 }
 
-/* Details Section Styles */
-li > div:last-child {
-  margin-top: 10px;
+/* Flèche vers le bas par défaut */
+.arrow-down {
+  border-top: 5px solid #333;
 }
 
-h4 {
+/* Flèche vers le haut lorsque les détails sont affichés */
+.arrow-up {
+  border-bottom: 5px solid #333;
+}
+
+/* Style pour les informations sur le client et l'article */
+strong {
+  color: #4CAF50;
+}
+
+/* Style pour les détails de la commande */
+h5 {
   color: #333;
 }
 
-/* Article Details Styles */
-li > div:last-child ul li div {
-  margin-top: 5px;
+/* Style pour la liste des articles */
+ul ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Style pour chaque article */
+li li {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
 }

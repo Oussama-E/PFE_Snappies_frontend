@@ -34,6 +34,15 @@ export class TourneeService {
     return this.http.post(url, body, { headers });
   }
 
+  deleteTournee(tourneeId: number): Observable<any> {
+    const token = this.tokenService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Token ${token}`
+    });
+
+    return this.http.delete<any>(`${this.apiUrl}/delete_tournee/${tourneeId}`, { headers });
+  }
+
   creerTournee(nom: string): Observable<any> {
     const token = this.tokenService.getToken();
     const headers = new HttpHeaders({
