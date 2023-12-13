@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Article } from './article.model';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-article',
@@ -33,7 +34,7 @@ export class ArticleComponent implements OnInit {
   articles: Article[] = []; 
   state = 'hidden';
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private toastr: ToastrService, private tokenService : TokenService) {
     this.articleForm = this.fb.group({
       nom: ['', Validators.required],
       type: ['', Validators.required],
@@ -60,10 +61,11 @@ onSubmit() {
       const newArticle: Article = this.articleForm.value;
       console.log("ici", newArticle);
       
-
+      const token = this.tokenService.getToken();
+      console.log(token);
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Token 0aa1967b91c4c1232cf87c8c6373a035d08255d2'
+        'Authorization': `Token ${token}`
       });
 
     this.http.post('http://localhost:8000/articles/create_article', newArticle, { headers }).subscribe(
@@ -89,8 +91,9 @@ confirmAdd() {
 }
 
   fetchArticles() {
+    const token = this.tokenService.getToken();
     const headers = new HttpHeaders({
-      'Authorization': 'Token 0aa1967b91c4c1232cf87c8c6373a035d08255d2'
+      'Authorization': `Token ${token}`
     });
 
     this.http.get<Article[]>('http://localhost:8000/articles/get_all_articles', { headers }).subscribe(
@@ -106,7 +109,8 @@ confirmAdd() {
 
   deleteArticle(id: number) {
     const url = 'http://localhost:8000/articles/delete_article/' + id;
-    const options = { headers: new HttpHeaders({ 'Authorization': 'Token 0aa1967b91c4c1232cf87c8c6373a035d08255d2' }) };
+    const token = this.tokenService.getToken();
+    const options = { headers: new HttpHeaders({ 'Authorization': `Token ${token}` }) };
     this.http.delete(url, options).subscribe(response => {
       let articleToDelete: any = this.articles.find(a => a.article == id); // Utilisez la syntaxe correcte pour la fonction fléchée
       // Mettez à jour le tableau articles en filtrant l'élément supprimé
