@@ -41,7 +41,8 @@ export class LoginFormComponent {
       this.http.post<any>(apiUrl, formData)
         .subscribe(
           data => {
-            this.tokenService.setToken(data.token , data.username)
+            this.tokenService.setToken(data.token , data.username, data.role)
+            this.tokenService.isAdmin(data.role);
             this.checkUserRole(data.role);
 
             console.log(data.username);
