@@ -7,12 +7,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class TokenService {
   private readonly TOKEN_KEY = 'token';
   private readonly USERNAME_KEY = 'username'; 
+  private readonly IS_ADMIN = 'isAdmin'; 
   private uservalueSubject = new BehaviorSubject<any>(null);
   uservalue$ : any;
 
-  setToken(token: string, username: string ): void {
+  setToken(token: string, username: string, role: string ): void {
     localStorage.setItem(this.TOKEN_KEY, token);
-    localStorage.setItem(this.USERNAME_KEY, username); 
+    localStorage.setItem(this.USERNAME_KEY, username);
+    localStorage.setItem(this.IS_ADMIN, role);
+    
     this.setToConnected();
     this.uservalue$ = {token, username}
     this.uservalueSubject.next({token, username}); // Ajoutez cette ligne
@@ -39,7 +42,7 @@ export class TokenService {
   private isConnectedSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
   isConnected$ = this.isConnectedSubject.asObservable();
 
-  private isAdminSubject = new BehaviorSubject<boolean>(false);
+  private isAdminSubject = new BehaviorSubject<boolean>(localStorage.getItem(this.IS_ADMIN) == "admin");
   isAdmin$ = this.isAdminSubject.asObservable();
   
 
@@ -53,13 +56,14 @@ export class TokenService {
     this.isConnectedSubject.next(true);
   }
 
-  isAdmin(): boolean{
-    let isAdmin = false;
-    this.uservalue$.subscribe((value: any) => {
-      console.log("uservalue", value);
-      isAdmin = (value?.username ?? "") === "billy_admin";
-    });
-    return isAdmin;
+  isAdmin(role: string): boolean {
+    if(role == "admin"){
+      this.isAdminSubject.next(true);
+      return true;
+    }else{
+      this.isAdminSubject.next(false);
+      return false;
+    }
   }
   
   
