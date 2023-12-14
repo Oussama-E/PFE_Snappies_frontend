@@ -191,16 +191,22 @@ export class CommandsListComponent implements OnInit {
     const formData = {
       articles: this.modifiedCommand,
     };
+
+    let isPermanentValue
+
+    if(command.est_livre){
+      isPermanentValue = true
+    }else{
+      let isPermanent = document.getElementById(`isPermanent`) as HTMLInputElement;
+      isPermanentValue = isPermanent.checked ? true : false;
+    }
     
-    let isPermanent = document.getElementById(`isPermanent`) as HTMLInputElement;
-    let isPermanentValue = isPermanent.checked ? true : false;
     let apiUrl
     console.log(isPermanentValue);
 
     if(isPermanentValue){
       apiUrl = `${environment.apiUrl}/commande/update_commande_admin/${command.id_commande}`;
     }else{
-      console.log(command.id_commande_modifie);
       apiUrl = `${environment.apiUrl}/commande/update_commande_admin/${command.id_commande_modifie}`;
     }
      
