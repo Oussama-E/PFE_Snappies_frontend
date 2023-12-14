@@ -50,6 +50,7 @@ export class ClientsComponent implements OnInit {
     // Si le formulaire est ouvert, initialiser les données de mise à jour
     if (this.isUpdateFormOpen[id]) {
       this.clientToUpdate = { ...this.clients.find(client => client.id === id) };
+
     } else {
       // Si le formulaire est fermé, réinitialiser les données de mise à jour
       this.clientToUpdate = {};
@@ -66,11 +67,22 @@ export class ClientsComponent implements OnInit {
         this.isUpdateFormOpen[id] = false;
         // Réinitialiser les données de mise à jour
         this.clientToUpdate = {};
+
       },
       (error) => {
         console.error(error);
       }
     );
+  }
+
+  toggleUpdateForm(id: number): void {
+    // Ouvrir ou fermer le formulaire en fonction de l'état actuel
+    this.isUpdateFormOpen[id] = !this.isUpdateFormOpen[id];
+  
+    // Si le formulaire est fermé, réinitialiser les données de mise à jour
+    if (!this.isUpdateFormOpen[id]) {
+      this.clientToUpdate = {};
+    }
   }
 
   confirmDelete(client: any) {

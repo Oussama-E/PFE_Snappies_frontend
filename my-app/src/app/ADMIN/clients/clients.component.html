@@ -13,10 +13,11 @@
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-center">
             <!-- Bouton pour afficher/masquer le formulaire -->
-            <button (click)="updateClient(client.id)" class="btn btn-primary me-2"><i class="fa fa-edit"></i> Modifier</button>
-
+            <button (click)="updateClient(client.id)" class="btn btn-primary me-2">
+                <i class="fa fa-edit"></i> Modifier
+            </button>
             <!-- Formulaire de mise à jour conditionnel -->
-            <form *ngIf="isUpdateFormOpen[client.id]" (submit)="updateClient(client.id)" class="me-2">
+            <form *ngIf="isUpdateFormOpen[client.id]" (submit)="saveUpdatedClient(client.id)" class="me-2">
                 <div class="form-group">
                     <label>Nom:</label>
                     <input [(ngModel)]="clientToUpdate.name" name="name" required class="form-control">

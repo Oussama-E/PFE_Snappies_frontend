@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from '../token.service';
+import { environment } from 'src/environement/environement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientsService {
-  private apiUrl = 'http://localhost:8000'; // Assurez-vous de mettre à jour l'URL selon votre configuration backend
+  private apiUrl = environment.apiUrl; // Assurez-vous de mettre à jour l'URL selon votre configuration backend
 
   constructor(private http: HttpClient, private tokenService: TokenService) { }
 

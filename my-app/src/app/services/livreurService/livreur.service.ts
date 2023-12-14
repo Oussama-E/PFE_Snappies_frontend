@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from '../token.service';
+import { environment } from 'src/environement/environement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LivreurService {
-  private apiUrl = 'http://localhost:8000/commande'; // Remplacez cela par l'URL réelle de votre API
+  private apiUrl = environment.apiUrl; // Remplacez cela par l'URL réelle de votre API
 
   constructor(private http: HttpClient, private tokenService: TokenService) { }
 
@@ -19,7 +20,7 @@ export class LivreurService {
   getAllLivreurs(): Observable<any> {
     const token = this.tokenService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
-    return this.http.get<any>(`${this.apiUrl}/getAllLivreurs`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/commande/getAllLivreurs`, { headers });
   }
 
   
@@ -27,14 +28,14 @@ export class LivreurService {
     const token = this.tokenService.getToken();
     const livreurUsername = this.tokenService.getLivreurUsername();
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
-    return this.http.get<any[]>(`${this.apiUrl}/get_tournees_livreur/${livreurUsername}`, { headers });
+    return this.http.get<any[]>(`${this.apiUrl}/commande/get_tournees_livreur/${livreurUsername}`, { headers });
   }
 
   getCommandesFromTournee(tourneeId: number): Observable<any> {
     console.log("get tournee from commande new");
     const token = this.tokenService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
-    return this.http.get<any>(`${this.apiUrl}/get_commandes_tournee_modifie_ou_non/${tourneeId}`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/commande/get_commandes_tournee_modifie_ou_non/${tourneeId}`, { headers });
   }
 
   createLivreur(username: string, password: string): Observable<any> {
@@ -46,14 +47,14 @@ export class LivreurService {
       password: password,
     };
 
-    return this.http.post<any>(`http://localhost:8000/login/create_livreur`, livreurData, { headers });
+    return this.http.post<any>(`${this.apiUrl}/login/create_livreur`, livreurData, { headers });
   }
   marquerCommeLivre(idCommande: number): Observable<any> {
     const token = this.tokenService.getToken();
     console.log(token);
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
 
-    const url = `${this.apiUrl}/update_livraison/${idCommande}`;
+    const url = `${this.apiUrl}/commande/update_livraison/${idCommande}`;
 
     return this.http.patch<any>(url, {} , {headers});
   }

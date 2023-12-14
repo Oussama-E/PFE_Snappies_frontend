@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environement/environement';
 
 @Component({
   selector: 'app-login-form',
@@ -36,7 +37,7 @@ export class LoginFormComponent {
         password: this.commandForm.value.password,
       };
 
-      const apiUrl = 'http://localhost:8000/login/loginUser';
+      const apiUrl = `${environment.apiUrl}/login/loginUser`;
 
       this.http.post<any>(apiUrl, formData)
         .subscribe(

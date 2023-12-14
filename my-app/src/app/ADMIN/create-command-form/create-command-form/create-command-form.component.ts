@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } fr
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environement/environement';
 
 @Component({
   selector: 'app-create-command-form',
@@ -51,7 +52,7 @@ export class CreateCommandFormComponent {
 
   getArticles(): void {
     const token = this.tokenService.getToken();
-    const apiUrl = 'http://localhost:8000/articles/get_all_articles';
+    const apiUrl = `${environment.apiUrl}/articles/get_all_articles`;
 
     this.http.get<any[]>(apiUrl, {
       headers: {
@@ -70,7 +71,7 @@ export class CreateCommandFormComponent {
 
   getTournees(): void {
     const token = this.tokenService.getToken();
-    const apiUrl = 'http://localhost:8000/tournee/get_all_tournee';
+    const apiUrl = `${environment.apiUrl}/tournee/get_all_tournee`;
 
     this.http.get<any[]>(apiUrl, {
       headers: {
@@ -89,7 +90,7 @@ export class CreateCommandFormComponent {
 
   getClients(): void {
     const token = this.tokenService.getToken();
-    const apiUrl = 'http://localhost:8000/client/get_all_clients_free';
+    const apiUrl = `${environment.apiUrl}/client/get_all_clients_free`;
 
     this.http.get<any[]>(apiUrl, {
       headers: {
@@ -133,7 +134,7 @@ export class CreateCommandFormComponent {
       console.log(formData);
       
 
-      const apiUrl = 'http://localhost:8000/commande/create_commande';
+      const apiUrl = `${environment.apiUrl}/commande/create_commande`;
 
       this.http.post(apiUrl, formData,{
         headers: {
