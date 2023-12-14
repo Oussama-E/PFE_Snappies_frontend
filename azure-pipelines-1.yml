@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: windows-latest
+  vmImage: debian-10
 
 steps:
 - task: NodeTool@0
