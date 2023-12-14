@@ -6,35 +6,33 @@
         <div *ngFor="let tournee of tournees" ngbAccordionItem>
             <h2 ngbAccordionHeader>
                 <button ngbAccordionButton>
-                    <strong>Nom:</strong> {{ tournee.nom }} 
+                    <strong> {{ tournee.nom }} </strong> 
                
                 </button>
             </h2>
             <div ngbAccordionCollapse>
                 <div ngbAccordionBody>
                     <!-- Afficher les commandes de la tournée -->
-                    <button (click)="loadCommandes(tournee.id_tournee)">Afficher les commandes</button>
+                    <button class = "btn btn-dark" (click)="loadCommandes(tournee.id_tournee)">Afficher les commandes</button>
                     <span [ngClass]="{'arrow-up': tournee.showDetails, 'arrow-down': !tournee.showDetails}"></span>
                     <div *ngIf="tournee.showDetails">
                         <div *ngIf="tournee.commandes && tournee.commandes.length > 0">
-                            <h4>Commandes de la tournée :</h4>
                             <ul>
                                 <li *ngFor="let commande of tournee.commandes">
                                     <div>
-                                        {{ commande.client.name }} - {{ commande.client.adresse }} 
+                                        <strong> {{ commande.client.name }} </strong> {{ commande.client.adresse }} 
                                         <!-- Condition pour afficher le bouton uniquement si est_livre est false -->
-                                        <button class="marquer-livre" *ngIf="!commande.est_livre" (click)="marquerCommeLivre(commande.id_commande)">Marquer comme livrée</button>
+                                        <button class="btn btn-dark" *ngIf="!commande.est_livre" (click)="marquerCommeLivre(commande.id_commande)">Marquer comme livrée</button>
                                     </div>
 
                                     <div>
-                                        <h5>Détails de la commande de {{commande.client.name}} :</h5>
+                                        
                                         <ul>
                                             <li *ngFor="let article of commande.articles">
                                                 {{ article.nom_article }} - {{ article.nombre_articles }} articles
                                             </li>
                                         </ul>
                                         <div [ngStyle]="{'color': commande.est_livre ? 'green' : 'orange'}">
-                                            <strong>État de livraison :</strong>
                                              <strong>{{ commande.est_livre ? 'Livrée' : 'Non livrée' }} </strong>
                                            </div>
                                     </div>

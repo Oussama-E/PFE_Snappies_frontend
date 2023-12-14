@@ -1,65 +1,64 @@
 .container {
-    max-width: 800px;
-    width: 90%;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .container h2 {
-    font-size: 1.2em;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  button {
-    font-family: sans-serif;
-    background-color: green;
-    display: block;
-    justify-content: center;
-    text-align: center;
-    margin: auto;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  .livreurs {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .livreur {
-    display: flex; /* Utilisez le display flex pour aligner les éléments */
-    align-items: center; /* Centrez les éléments verticalement */
-    justify-content: space-between; /* Répartissez les éléments horizontalement */
-    margin-bottom: 10px; /* Ajoutez un espace entre les éléments */
-  }
+  max-width: 100%; /* Ajuste la largeur maximale à 100% de la largeur de l'écran */
+  width: 150%;
+  margin: 0 auto;
+  padding: 70px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
- 
-  
-  .livreur:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .livreur h3 {
-    color: #333;
-    margin: 0;
-    font-size: 1em;
-  }
-  
-   .btn {
-    width: 100%; /* Augmentez la largeur des boutons */
-    margin-bottom: 10px; /* Ajoutez un espace entre les boutons */
-  }
+.container h2 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+button {
+  font-family: sans-serif;
+  background-color: green;
+  display: block;
+  width: 100%; /* Ajuste la largeur à 100% pour occuper toute la largeur disponible */
+  text-align: center;
+  margin: 10px auto; /* Ajuste la marge pour une meilleure apparence */
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.livreurs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.livreur {
+  display: flex;
+  flex-direction: column; /* Ajuste la direction de la colonne pour un meilleur empilement sur les petits écrans */
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.livreur:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.livreur h3 {
+  color: #333;
+  margin: 0;
+  font-size: 1em;
+}
+
+.btn {
+  width: 100%;
+  margin-bottom: 10px;
+}

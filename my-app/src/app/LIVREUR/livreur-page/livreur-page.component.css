@@ -1,113 +1,53 @@
-/* Style global for the page */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
-
-/* Container styling */
-div {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Title styling */
-.title {
-  color: #333;
-}
-
-/* Accordion styling */
-.divAccordion {
-  margin-top: 20px;
-}
-
-/* Accordion item styling */
-div > div > div {
-  margin-bottom: 20px;
-  padding: 10px;
+li {
   border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
   background-color: #f9f9f9;
+  list-style-type: none;
 }
 
-/* Accordion header styling */
-h2 {
-  margin: 0;
+/* Style the tour item container */
+li > div {
+  display: flex;
+  flex-direction: column; /* Ajuste la direction de la colonne pour un meilleur empilement sur les petits écrans */
+  align-items: flex-start; /* Ajuste l'alignement sur le côté gauche */
+}
+
+/* Style the tournee name and livreur */
+li > div > strong {
+  margin-bottom: 5px; /* Ajoute une marge inférieure pour un meilleur espacement */
+}
+
+/* Style the select element */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'><path fill='%23333' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z'/></svg>") no-repeat right 10px center;
+  background-size: 15px;
+  width: 100%; /* Ajuste la largeur à 100% pour occuper toute la largeur disponible */
+  border-radius: 5px;
   padding: 10px;
-  background-color: #fff;
+  margin-bottom: 5px; /* Ajoute une marge inférieure pour un meilleur espacement */
 }
 
-/* Accordion button styling */
-button {
-  cursor: pointer;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  padding: 5px;
+/* Style the create tournee button */
+#createtourne {
+  font-size: 15px;
+  width: 100%; /* Ajuste la largeur à 100% pour occuper toute la largeur disponible */
+  margin-bottom: 10px; /* Ajoute une marge inférieure pour un meilleur espacement */
 }
 
-/* Accordion collapse styling */
-div > div > div > div > div {
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-}
-
-/* Button for showing commands styling */
-button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-/* Arrow styling */
-span {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-}
-
-/* Arrow down by default */
-.arrow-down {
-  border-top: 5px solid #333;
-}
-
-/* Arrow up when details are shown */
-.arrow-up {
-  border-bottom: 5px solid #333;
-}
-
-/* Styling for order details */
-h4 {
-  color: #333;
-}
-
-/* Styling for each order item */
-ul ul {
-  list-style: none;
-  padding: 0;
-}
-
-/* Styling for each article item */
-li li {
-  border: 1px solid #ddd;
-  padding: 10px;
+/* Style the delete tournee button */
+.btn {
+  width: 100%;
   margin-bottom: 10px;
 }
 
-/* Styling for the "Marquer comme livrée" button */
-.marquer-livre {
-  background-color: #ff9800;
-  color: #fff;
-  border: none;
-  padding: 5px;
+.btn.btn-danger {
+  background-color: #0f2b01;
   cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  color: #eeeeee;
 }

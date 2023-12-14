@@ -1,41 +1,38 @@
-.divAccordion{
-    width: 500px;
+.divAccordion {
+    width: 100%; /* Ajuste la largeur à 100% de la largeur de l'écran */
 }
 
-.title{
+.title {
     text-align: center;
-    margin: 100px;
+    margin: 20px 10px; /* Ajuste la marge pour une meilleure apparence sur les petits écrans */
 }
 
 .article-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column; /* Ajuste la direction de la colonne pour un meilleur empilement sur les petits écrans */
     justify-content: space-between;
     margin: 10px;
     padding: 8px;
     border-top: 1px solid #ccc;
-    /* Ajoutez d'autres styles selon vos besoins */
 }
 
 .article-container p {
-    margin: 0; /* Pour supprimer les marges par défaut des paragraphes */
-    /* Ajoutez d'autres styles selon vos besoins */
+    margin: 0;
 }
 
-.numberInput{
-    width: 50px;
-    margin-right: 10px;
+.numberInput {
+    width: 100%; /* Ajuste la largeur à 100% pour occuper toute la largeur disponible */
+    margin-bottom: 10px; /* Ajoute une marge en bas pour l'espace entre les éléments */
 }
 
-.tourneeContainer{
+.tourneeContainer {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px; /* Ajuste la marge inférieure pour une meilleure apparence */
 }
 
-
-.divAjoutArticle{
+.divAjoutArticle {
     display: flex;
-    flex-direction: row;
+    flex-direction: column; /* Ajuste la direction de la colonne pour un meilleur empilement sur les petits écrans */
     justify-content: space-between;
     margin: 10px;
     padding: 8px;
@@ -46,17 +43,17 @@ button {
     font-family: sans-serif;
     background-color: green;
     display: block;
-    justify-content: center;
+    width: 100%; /* Ajuste la largeur à 100% pour occuper toute la largeur disponible */
     text-align: center;
-    margin: auto;
+    margin: 10px auto; /* Ajuste la marge pour une meilleure apparence */
     border: none;
     border-radius: 10px;
     color: white;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #45a049;
-  }
+}
