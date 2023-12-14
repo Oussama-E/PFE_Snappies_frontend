@@ -29,8 +29,13 @@
                                         
                                         <ul>
                                             <li *ngFor="let article of commande.articles">
-                                                {{ article.nom_article }} - {{ article.nombre_articles }} articles
+                                                {{ article.nom_article }}
+                                                <span *ngIf="article.taille_article !== null"> - Taille: {{ article.taille_article }}</span>
+                                                <span *ngIf="article.quantite_caisse !== 0"> - {{ article.quantite_caisse }} caisses</span>
+                                                <span *ngIf="article.quantite_unite !== 0"> - {{ article.quantite_unite }} unités</span>
+                                                
                                             </li>
+                                            
                                         </ul>
                                         <div [ngStyle]="{'color': commande.est_livre ? 'green' : 'orange'}">
                                              <strong>{{ commande.est_livre ? 'Livrée' : 'Non livrée' }} </strong>
