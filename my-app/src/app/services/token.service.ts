@@ -57,7 +57,7 @@ export class TokenService {
     let isAdmin = false;
     this.uservalue$.subscribe((value: any) => {
       console.log("uservalue", value);
-      isAdmin = (value?.username ?? "") === "admin2";
+      isAdmin = (value?.username ?? "") === "billy_admin";
     });
     return isAdmin;
   }
