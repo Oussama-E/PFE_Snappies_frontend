@@ -20,7 +20,7 @@ steps:
     npm install
     echo "Current directory contents:"
     ls -al
-    ng build --configuration development
+    ng build
     echo "Directory contents after ng build:"
     ls -al dist/my-app
   displayName: 'npm install and build'
