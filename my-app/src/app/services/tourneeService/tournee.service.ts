@@ -3,31 +3,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from '../token.service';
+import { environment } from 'src/environement/environement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TourneeService {
-  private apiUrl = 'http://localhost:8000/tournee';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private tokenService: TokenService) { }
 
   getAllTournees(): Observable<any> {
     const token = this.tokenService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
-    return this.http.get<any>(`${this.apiUrl}/get_all_tournee`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/tournee/get_all_tournee`, { headers });
   }
 
   getCommandesFromTournee(tourneeId: number): Observable<any> {
     console.log("get tournee from commande new");
     const token = this.tokenService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
-    return this.http.get<any>(`${this.apiUrl}/get_commandes_tournee_modifie_ou_non/${tourneeId}`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/tournee/get_commandes_tournee_modifie_ou_non/${tourneeId}`, { headers });
   }
   
   assignerTournee(tourneeId: number, livreurId: number): Observable<any> {
     const token = this.tokenService.getToken();
-    const url = `${this.apiUrl}/assigner_tournee/${tourneeId}`;
+    const url = `${this.apiUrl}/tournee/assigner_tournee/${tourneeId}`;
     const body = { livreur_id: livreurId };
     const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
     
@@ -40,7 +41,7 @@ export class TourneeService {
       'Authorization': `Token ${token}`
     });
 
-    return this.http.delete<any>(`${this.apiUrl}/delete_tournee/${tourneeId}`, { headers });
+    return this.http.delete<any>(`${this.apiUrl}/tournee/delete_tournee/${tourneeId}`, { headers });
   }
 
   creerTournee(nom: string): Observable<any> {
@@ -52,7 +53,7 @@ export class TourneeService {
 
     const body = { nom };
 
-    return this.http.post<any>(`${this.apiUrl}/creer_tournee`, body, { headers });
+    return this.http.post<any>(`${this.apiUrl}/tournee/creer_tournee`, body, { headers });
   }
 
   update_all_EstLivre(): Observable<any> {
@@ -62,7 +63,7 @@ export class TourneeService {
       'Authorization': `Token ${token}`
     });
 
-    const url = `http://localhost:8000/commande/update_est_livre`;
+    const url = `${this.apiUrl}/commande/update_est_livre`;
 
     return this.http.patch<any>(url, {}, { headers });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from '../../services/token.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { environment } from 'src/environement/environement';
 
 @Component({
   selector: 'app-commands-list',
@@ -36,7 +37,7 @@ export class CommandsListComponent implements OnInit {
 
   getTournees(): void {
     const token = this.tokenService.getToken();
-    const apiUrl = 'http://localhost:8000/tournee/get_all_tournee';
+    const apiUrl = `${environment.apiUrl}/tournee/get_all_tournee`;
 
     this.http.get<any[]>(apiUrl, {
       headers: {
@@ -55,7 +56,7 @@ export class CommandsListComponent implements OnInit {
 
   getCommands(idTournee: any): void {
     const token = this.tokenService.getToken();
-    const apiUrl = 'http://localhost:8000/commande/get_commandes_tournee_admin/' + idTournee;
+    const apiUrl = `${environment.apiUrl}/commande/get_commandes_tournee_admin/${idTournee}` ;
 
     this.http.get<any[]>(apiUrl, {
       headers: {
@@ -92,7 +93,7 @@ export class CommandsListComponent implements OnInit {
     this.mapIsBeingModified.set(command.id_commande, true);
 
     const token = this.tokenService.getToken();
-    const apiUrl = 'http://localhost:8000/articles/get_all_articles';
+    const apiUrl =`${environment.apiUrl}/articles/get_all_articles`;
 
     this.http.get<any[]>(apiUrl, {
       headers: {
@@ -197,10 +198,10 @@ export class CommandsListComponent implements OnInit {
     console.log(isPermanentValue);
 
     if(isPermanentValue){
-      apiUrl = 'http://localhost:8000/commande/update_commande_admin/' + command.id_commande;
+      apiUrl = `${environment.apiUrl}/commande/update_commande_admin/${command.id_commande}`;
     }else{
       console.log(command.id_commande_modifie);
-      apiUrl = 'http://localhost:8000/commande/update_commande_admin/' + command.id_commande_modifie;
+      apiUrl = `${environment.apiUrl}/commande/update_commande_admin/${command.id_commande_modifie}`;
     }
      
 

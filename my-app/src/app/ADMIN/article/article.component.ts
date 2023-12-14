@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Article } from './article.model';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { TokenService } from 'src/app/services/token.service';
+import { environment } from 'src/environement/environement';
 
 @Component({
   selector: 'app-article',
@@ -69,7 +70,7 @@ onSubmit() {
         'Authorization': `Token ${token}`
       });
 
-    this.http.post('http://localhost:8000/articles/create_article', newArticle, { headers }).subscribe(
+    this.http.post(`${environment.apiUrl}/articles/create_article`, newArticle, { headers }).subscribe(
       response => {
         this.toastr.success('Article créé avec succès', 'Succès', {
           positionClass: 'md-toast-top-full-width',
@@ -112,7 +113,7 @@ confirmAdd() {
       'Authorization': `Token ${token}`
     });
 
-    this.http.get<Article[]>('http://localhost:8000/articles/get_all_articles', { headers }).subscribe(
+    this.http.get<Article[]>(`${environment.apiUrl}/articles/get_all_articles`, { headers }).subscribe(
       (data: Article[]) => {
         this.articles = data;
       },
@@ -124,7 +125,7 @@ confirmAdd() {
 
 
   deleteArticle(id: number) {
-    const url = 'http://localhost:8000/articles/delete_article/' + id;
+    const url = `${environment.apiUrl}/articles/delete_article/` + id;
     const token = this.tokenService.getToken();
     const options = { headers: new HttpHeaders({ 'Authorization': `Token ${token}` }) };
     this.http.delete(url, options).subscribe(response => {
